@@ -1,0 +1,1 @@
+export const SHOP_SIZE ='SHOP_SIZE';

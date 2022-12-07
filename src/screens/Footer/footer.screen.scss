@@ -1,0 +1,88 @@
+.footer{
+  margin-top: 80px;
+
+.followus {
+  width: 100%;
+  margin: 30px auto;
+}
+.followus_header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.followus_title {
+  font-family: Jost;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 47px;
+  text-align: center;
+  margin: 10px;
+}
+.followus_view {
+  //styleName: Button/14/Semi;
+  font-family: Jost;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  padding: 13px 40px 13px 40px;
+
+  margin: 15px 0;
+  text-align: center;
+  border: 2px solid #eeeeee;
+}
+.followus_img {
+  display: flex;
+  margin: 30px 0 0 0;
+  height: 240px;
+}
+.followus_img img {
+  width: 100%;
+}
+
+.footer_container {
+  background: #f5f6f8;
+  padding: 40px 0;
+  
+}
+.footer_wrapper{
+ width: 100%;
+  display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+// .footer_panel{
+//   width: 25%;
+// }
+.footer_comment_panel{
+width: 270px;
+display: flex;
+align-items: flex-start;
+justify-content: flex-start;
+flex-direction: column;
+
+}
+.footer_header{
+  width: 100%;
+  font-family: Jost;
+font-size: 16px;
+font-weight: 700;
+line-height: 24px;
+letter-spacing: 2px;
+margin: 20px 0;
+}
+.footer_content{
+  font-family: Jost;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+margin: 10px 0;
+
+}
+
+.social_media{
+  display: flex;
+  align-items: center;
+ gap: 10px;
+ margin:20px 0;
+}
+}

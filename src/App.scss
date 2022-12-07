@@ -1,0 +1,131 @@
+
+*{
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  font-family: 'Poppins' !important;
+  background-color: #fff;
+}
+
+
+:root {
+  --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6);
+  --rsbs-bg: #fff;
+  --rsbs-handle-bg: hsla(0, 0%, 0%, 0.14);
+  --rsbs-max-w: 375px;
+  --rsbs-ml: auto;
+  --rsbs-mr: auto;
+  --rsbs-overlay-rounded: 16px;
+  // --rsbs-m:auto
+}
+// }
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 700;
+  src: url(assets/fonts/Poppins-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 800;
+  src: url(assets/fonts/Poppins-ExtraBold.ttf);
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 300;
+  src: url(assets/fonts/Poppins-Light.ttf);
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 500;
+  src: url(assets/fonts/Poppins-Medium.ttf);
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 600;
+  src: url(assets/fonts/Poppins-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 400;
+  src: url(assets/fonts/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 100;
+  src: url(assets/fonts/Inter-Thin.ttf);
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 100;
+  src: url(assets/fonts/Inter-Thin.ttf);
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 200;
+  src: url(assets/fonts/Inter-ExtraLight.ttf);
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 300;
+  src: url(assets/fonts/Inter-Light.ttf);
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  src: url(assets/fonts/Inter-Regular.ttf);
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 500;
+  src: url(assets/fonts/Inter-Medium.ttf);
+}
+@font-face {
+  font-family: 'Jost';
+  font-weight: 100;
+  src: url(assets/fonts/Jost-Thin.ttf);
+}
+@font-face {
+  font-family: 'Jost';
+  font-weight: 100;
+  src: url(assets/fonts/Jost-Thin.ttf);
+}
+@font-face {
+  font-family: 'Jost';
+  font-weight: 200;
+  src: url(assets/fonts/Jost-ExtraLight.ttf);
+}
+@font-face {
+  font-family: 'Jost';
+  font-weight: 300;
+  src: url(assets/fonts/Jost-Light.ttf);
+}
+@font-face {
+  font-family: 'Jost';
+  font-weight: 400;
+  src: url(assets/fonts/Jost-Regular.ttf);
+}
+@font-face {
+  font-family: 'Jost';
+  font-weight: 500;
+  src: url(assets/fonts/Jost-Medium.ttf);
+}
+::-webkit-scrollbar {
+  display: none;
+}
+element {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+}
+
+element::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}

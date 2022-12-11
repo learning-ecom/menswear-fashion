@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Assets from "../../imports/assets.imports";
+import Assets from "../../../imports/assets.imports";
 import "./navbar.screen.scss";
 
 const Navbar = () => {

@@ -1,0 +1,91 @@
+
+.cart_list_item {
+  width: 100%;
+
+.cart_list_item_wrapper {
+  width: 100%;
+  display: flex;
+  margin: 10px 0;
+}
+.cart_detail_close{
+  cursor: pointer;
+}
+.line {
+  content: "";
+  border-bottom: 1px solid #eeeeee;
+  width: 90%;
+  margin: 0 auto;
+}
+.cart_product_details {
+  width: 50%;
+  display: flex;
+  gap: 20px;
+  padding: 15px 20px;
+}
+.cart_product {
+  width: 100px;
+  height: 133px;
+}
+.cart_product_desc {
+  font-family: Jost;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: auto;
+}
+.cart_product_price {
+  width: 15%;
+  margin: auto;
+  padding: 15px 0;
+  text-align: center;
+  //styleName: p2/16/Book;
+  font-family: Jost;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+.cart_product_quantity {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart_product_quantity div {
+  font-family: Jost;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+.quantity_decrement {
+  border: #e5e5e5 2px solid;
+  padding: 8px 8px;
+  display: inline-block;
+  cursor: pointer;
+}
+.quantity_value {
+  border-top: #e5e5e5 2px solid;
+  border-bottom: #e5e5e5 2px solid;
+  padding: 8px 15px;
+  display: inline-block;
+}
+
+.quantity_increment {
+  border: #e5e5e5 2px solid;
+  padding: 8px 8px;
+  display: inline-block;
+  cursor: pointer;
+}
+.cart_product_total {
+  width: 15%;
+  padding: 15px 0;
+  margin: auto;
+  //styleName: p2/16/Semi;
+  font-family: Jost;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+}
+}

@@ -1,0 +1,209 @@
+.product_detail_container {
+  width: 100%;
+  height: 100%;
+  .product_detail_wrapper {
+    width: 70%;
+    display: flex;
+    margin: auto;
+    // justify-content: space-around;
+    gap: 70px;
+  }
+  .product_detail_img {
+    width: 470px;
+    height: 660px;
+  }
+  .product_detail_img img {
+    width: 100%;
+    height: 100%;
+  }
+  .product_detail_content {
+    width: 40%;
+  }
+  .product_detail_title {
+    font-family: Jost;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+  }
+  .product_detail_review {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 10px 0;
+  }
+  #review_rating {
+    padding: 0 !important;
+  }
+  .product_detail_review_text {
+    //styleName: p2/16/Book;
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #666666;
+  }
+  .product_detail_amount {
+    //styleName: H4/24/Medium;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 36px;
+    margin: 10px 0;
+  }
+
+  .product_detail_color_title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 1px;
+  }
+  .product_detail_color {
+    display: flex;
+    gap: 10px;
+  }
+  .color_box_purple {
+    width: 44px;
+    height: 44px;
+    background: #1b2248;
+  }
+  .color_box_white {
+    width: 44px;
+    height: 44px;
+    background: #ffefef;
+  }
+
+  .color_box_gray {
+    width: 44px;
+    height: 44px;
+    background: #eeeeee;
+  }
+  .color_box_red {
+    width: 44px;
+    height: 44px;
+    background: #9f0b0b;
+  }
+  .product_detail_size {
+    margin: 10px 0;
+  }
+  .product_detail_size_header {
+    display: flex;
+    gap: 10px;
+  }
+  .product_detail_size_title {
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 1px;
+  }
+  .size_value {
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #666666;
+  }
+
+  .product_detail_size_items {
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .product_detail_item_size {
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    margin: auto;
+  }
+  .product_detail_wrapper_box {
+    border: #e5e5e5 2px solid;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .product_detail_wrapper_box_active {
+    border: #000000 2px solid;
+
+    width: 40px;
+    height: 40px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .product_detail_quantity_title {
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 2px;
+  }
+  .product_detail_quantity_value {
+    display: flex;
+    margin: 20px 0;
+  }
+  .product_detail_quantity_value div {
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  .quantity_decrement {
+    border: #e5e5e5 2px solid;
+    padding: 10px 8px;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .quantity_value {
+    border-top: #e5e5e5 2px solid;
+    border-bottom: #e5e5e5 2px solid;
+    padding: 10px 20px;
+    display: inline-block;
+  }
+
+  .quantity_increment {
+    border: #e5e5e5 2px solid;
+    padding: 10px 8px;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .product_detail_add_buy_now {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .product_types {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .product_wrapper {
+    display: flex;
+    gap: 5px;
+  }
+  .product_type_tittle {
+    font-family: Jost;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #777777;
+  }
+  .product_type_value {
+    font-family: Jost;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #000;
+  }
+  // .splider_container {
+  //   width: 85%;
+  //   margin: 30px auto;
+  // }
+}

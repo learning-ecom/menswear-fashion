@@ -1,0 +1,134 @@
+.login_container {
+  background-color: #f5f6f8;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+
+
+.login_form {
+  background-color: #ffffff;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.login_input_field {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Facebook login*/
+.google_facebook_btn {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.button_content {
+  width: 92%;
+}
+.button_text {
+  margin-left: 15px;
+}
+.primary_button_img {
+  width: 8%;
+  text-align: left;
+  justify-content: flex-start;
+  margin-left: 13px;
+}
+.facebook_btn > button {
+  flex: 1;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.google_btn {
+  display: flex;
+  align-items: center;
+  border: 2px solid #eeeeee;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.google_btn:hover {
+  background-color: #f5f6f8;
+}
+.google_logo {
+  width: 20px;
+  display: flex;
+  margin-left: 1rem;
+}
+
+.google_logo > img {
+  width: 100%;
+}
+
+.google_btn > button {
+  flex: 1;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.or {
+  text-align: center;
+  font-size: 12px;
+  position: relative;
+  margin: 1rem;
+  font-size: 14px;
+}
+
+.or::before {
+  content: "";
+  position: absolute;
+
+  height: 1px;
+  width: 40%;
+  background-color: #eeeeee;
+}
+.or::after {
+  content: "";
+  position: absolute;
+
+  height: 1px;
+  width: 40%;
+  background-color: #eeeeee;
+}
+
+.login_title {
+font-family: Jost;
+font-size: 32px;
+font-weight: 600;
+line-height: 47px;
+text-align: center;
+margin: 10px 0;
+}
+
+.input_container .input {
+  font-family: Jost;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.forget_pwd {
+  font-family: Jost;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  cursor: pointer;
+  text-align: right;
+  text-decoration: underline;
+}
+.forget_pwd:hover{
+  color: blue;
+}
+
+
+}

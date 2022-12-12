@@ -1,4 +1,3 @@
-
 import './primaryButton.ui.scss';
 
 interface IPrimaryButton {
@@ -17,7 +16,7 @@ interface IPrimaryButton {
   fontWeight?: any;
   padding?: any;
   fontFamily?: any;
-  letterSpacing?:any;
+  letterSpacing?: any;
 }
 
 const PrimaryButton = (props: IPrimaryButton) => {
@@ -44,12 +43,8 @@ const PrimaryButton = (props: IPrimaryButton) => {
         </div>
       )}
       <div
-        style={{
-          color: props.color,
-          fontSize: props.fontSize,
-          fontWeight: props.fontWeight,
-        }}
-        className="button_text">
+       
+        className="button_content">
         <div
           style={{
             color: props.color,
@@ -57,7 +52,6 @@ const PrimaryButton = (props: IPrimaryButton) => {
             fontWeight: props.fontWeight,
             fontFamily: props.fontFamily,
             letterSpacing:props.letterSpacing,
-
           }}
           className="button_text">
           {props.text}

@@ -50,9 +50,17 @@ const Navbar = () => {
                 <img src={Assets.cart} alt="cart" />
                 <div className="cart_value">3</div>
               </div>
-                {/* <div className="profile_img navbar_content">
+              {/* <div className="profile_img navbar_content">
                     <img src="" alt="" />
                 </div> */}
+              <div
+                onClick={() => {
+                  navigate("/login");
+                }}
+                className="login navbar_content"
+              >
+                Login
+              </div>
               <div
                 onClick={() => {
                   navigate("/signup");

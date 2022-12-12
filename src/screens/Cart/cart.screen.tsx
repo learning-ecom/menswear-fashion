@@ -129,17 +129,26 @@ const Cart = () => {
           </div>
           <div className="add_cart">
             <PrimaryButton
-            text={'ADD TO BAG'}backgroundColor={"#000000"} style={{borderRadius:"0px",border:"#000000 2px solid"}} 
-            fontFamily={"Jost"}    fontSize={"14px"} fontWeight={600} letterSpacing={"2px"}
-
-/>
+              text={"ADD TO BAG"}
+              backgroundColor={"#000000"}
+              style={{ borderRadius: "0px", border: "#000000 2px solid" }}
+              fontFamily={"Jost"}
+              fontSize={"14px"}
+              fontWeight={600}
+              letterSpacing={"2px"}
+            />
           </div>
           <div className="cart_buy_now">
-          <PrimaryButton
-            text={'BUY NOW'}backgroundColor={"#ffffff"} style={{borderRadius:"0px",border:"#000000 2px solid"}} 
-            fontFamily={"Jost"}    fontSize={"14px"} fontWeight={600} letterSpacing={"2px"}
-color={"#000000"}
-/>
+            <PrimaryButton
+              text={"BUY NOW"}
+              backgroundColor={"#ffffff"}
+              style={{ borderRadius: "0px", border: "#000000 2px solid" }}
+              fontFamily={"Jost"}
+              fontSize={"14px"}
+              fontWeight={600}
+              letterSpacing={"2px"}
+              color={"#000000"}
+            />
           </div>
         </div>
 

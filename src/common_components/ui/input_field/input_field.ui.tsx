@@ -1,5 +1,4 @@
 import { useSetState } from "../../../utils/function.utils";
-
 import "./input_field.ui.scss";
 
 interface IInputProps {
@@ -21,6 +20,8 @@ interface IInputProps {
   placeholder?: string;
   hide?: any;
   width?: any;
+  fontFamily?: any;
+  fontSize?: any;
 }
 
 const Input = (props: IInputProps) => {
@@ -29,7 +30,12 @@ const Input = (props: IInputProps) => {
 
   return (
     <>
-      <div className="login_input_field_label">{props.label}</div>
+      <div
+        className="login_input_field_label"
+        style={{ fontFamily: props.fontFamily, fontSize: props.fontSize }}
+      >
+        {props.label}
+      </div>
       <div
         className={
           state.focus ? "focus input_container set_bg" : "input_container"
@@ -55,6 +61,7 @@ const Input = (props: IInputProps) => {
           disabled={props?.disabled}
           placeholder={props.placeholder}
         />
+
         {props.hide !== "" && (
           <div
             className="icon_wrapper"

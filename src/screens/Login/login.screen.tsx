@@ -35,6 +35,8 @@ const LoginScreen = () => {
             value={state.email}
             placeholder={"Email"}
             label={"Email"}
+            fontFamily={"Jost"}
+            fontSize={"18px"}
           />
 
           <Input
@@ -44,6 +46,8 @@ const LoginScreen = () => {
             value={state.password}
             placeholder={"Password"}
             label={"Password"}
+            fontFamily={"Jost"}
+            fontSize={"18px"}
           />
           <div className="form_footer">
             <div className="remember">

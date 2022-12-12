@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "../../common_components/ui/card/card.ui";
 import Dropdown from "../../common_components/ui/dropdown/dropdown.ui";
 import FilterSidebar from "../../common_components/ui/sidebar/sidebar_component.ui";
 import Assets from "../../imports/assets.imports";
@@ -27,74 +28,16 @@ const Shops = () => {
                 background={"#fff"}
                 border={"2px solid #EEEEEE"}
               />
-               <Dropdown
-                width={"200px"}
-                background={"#000000"}
-                border={"2px solid #EEEEEE"}
-              />
+             
             </div>
           </div>
           <div className="product_card_item">
-            <div className="best_seller_card">
-              <img
-                src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                alt=""
-              />
-              <div className="best_seller_content">
-                Under Armour Training stretch woven half zip jacket in white
-              </div>
-              <div className="best_seller_footer">$222</div>
-            </div>
-            <div className="best_seller_card">
-              <img
-                src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                alt=""
-              />
-              <div className="best_seller_content">
-                Under Armour Training stretch woven half zip jacket in white
-              </div>
-              <div className="best_seller_footer">$222</div>
-            </div>
-            <div className="best_seller_card">
-              <img
-                src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                alt=""
-              />
-              <div className="best_seller_content">
-                Under Armour Training stretch woven half zip jacket in white
-              </div>
-              <div className="best_seller_footer">$222</div>
-            </div>
-            <div className="best_seller_card">
-              <img
-                src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                alt=""
-              />
-              <div className="best_seller_content">
-                Under Armour Training stretch woven half zip jacket in white
-              </div>
-              <div className="best_seller_footer">$222</div>
-            </div>
-            <div className="best_seller_card">
-              <img
-                src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                alt=""
-              />
-              <div className="best_seller_content">
-                Under Armour Training stretch woven half zip jacket in white
-              </div>
-              <div className="best_seller_footer">$222</div>
-            </div>
-            <div className="best_seller_card">
-              <img
-                src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                alt=""
-              />
-              <div className="best_seller_content">
-                Under Armour Training stretch woven half zip jacket in white
-              </div>
-              <div className="best_seller_footer">$222</div>
-            </div>
+           <Card/>
+           <Card/>
+           <Card/>
+           <Card/>
+           <Card/>
+           <Card/>
           </div>
           <div className="product_pagination">
             <div className="pagination_content">1</div>

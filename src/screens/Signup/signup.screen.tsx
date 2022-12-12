@@ -37,6 +37,8 @@ const SignUpScreen = () => {
             value={state.name}
             placeholder={"Name"}
             label={"Name"}
+            fontFamily={"Jost"}
+            fontSize={"18px"}
           />
           <Input
             onChange={(value: any) => setState({ lastname: value })}
@@ -45,6 +47,8 @@ const SignUpScreen = () => {
             value={state.lastname}
             placeholder={"LastName"}
             label={"LastName"}
+            fontFamily={"Jost"}
+            fontSize={"18px"}
           />
 
           <Input
@@ -54,6 +58,8 @@ const SignUpScreen = () => {
             value={state.email}
             placeholder={"Email"}
             label={"Email"}
+            fontFamily={"Jost"}
+            fontSize={"18px"}
           />
 
           <Input
@@ -63,6 +69,8 @@ const SignUpScreen = () => {
             value={state.password}
             placeholder={"Password"}
             label={"Password"}
+            fontFamily={"Jost"}
+            fontSize={"18px"}
           />
           <div className="term">
             <span>

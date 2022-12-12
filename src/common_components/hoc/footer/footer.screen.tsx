@@ -1,5 +1,5 @@
-import Searchbar from '../../common_components/ui/search_bar/search_bar.ui'
-import Assets from '../../imports/assets.imports'
+import Searchbar from '../../../common_components/ui/search_bar/search_bar.ui'
+import Assets from '../../../imports/assets.imports'
 import './footer.screen.scss'
 const Footer = () => {
     const follow_data:any=[

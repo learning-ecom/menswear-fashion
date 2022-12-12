@@ -111,19 +111,6 @@
   flex-direction: column;
 }
 
-.signup_form > form > label {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.signup_form > form > input {
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  border: 2px solid #eeeeee;
-  outline: none;
-  font-size: 16px;
-}
-
 .term {
   margin-bottom: 1rem;
   display: flex;
@@ -147,4 +134,10 @@
 
 .signup_btn:hover {
   background-color: rgb(37, 37, 37);
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1520px) {
+  .button_wrapper {
+    padding: 0;
+  }
 }

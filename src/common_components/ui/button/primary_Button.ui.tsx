@@ -1,5 +1,4 @@
-
-import './primaryButton.ui.scss';
+import "./primaryButton.ui.scss";
 
 interface IPrimaryButton {
   text?: String;
@@ -17,27 +16,28 @@ interface IPrimaryButton {
   fontWeight?: any;
   padding?: any;
   fontFamily?: any;
-  letterSpacing?:any;
+  letterSpacing?: any;
 }
 
 const PrimaryButton = (props: IPrimaryButton) => {
   return (
     <div
-      className={`${props.disabled ? 'disabled' : 'button_wrapper'} ${
-        props.className || ''
+      className={`${props.disabled ? "disabled" : "button_wrapper"} ${
+        props.className || ""
       }`}
       style={{
         backgroundColor: props.backgroundColor,
         width: props?.width,
         height: props?.height,
-        padding: props?.padding,
+
         ...props.style,
       }}
       onClick={() => {
         if (!props.disabled) {
           props.onClick();
         }
-      }}>
+      }}
+    >
       {props.icon && (
         <div className="primary_button_img">
           <img src={props.icon} alt="icon" className="primary_btn_icon" />
@@ -49,17 +49,19 @@ const PrimaryButton = (props: IPrimaryButton) => {
           fontSize: props.fontSize,
           fontWeight: props.fontWeight,
         }}
-        className="button_text">
+        className="button_text"
+      >
         <div
           style={{
             color: props.color,
             fontSize: props.fontSize,
             fontWeight: props.fontWeight,
             fontFamily: props.fontFamily,
-            letterSpacing:props.letterSpacing,
-
+            letterSpacing: props.letterSpacing,
+            padding: props.padding,
           }}
-          className="button_text">
+          className="button_text"
+        >
           {props.text}
         </div>
         {props.right_icon && (

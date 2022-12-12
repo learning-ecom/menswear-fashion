@@ -1,8 +1,15 @@
 import React from "react";
+import { useSetState } from "../../utils/function.utils";
 import Assets from "../../imports/assets.imports";
+import Input from "../../common_components/ui/input_field/input_field.ui";
+import PrimaryButton from "../../common_components/ui/button/primary_Button.ui";
 import "./login.screen.scss";
 
-const loginScreen = () => {
+const LoginScreen = () => {
+  const [state, setState] = useSetState({
+    email: "",
+    password: "",
+  });
   return (
     <div className="login_container">
       <div className="login_form">
@@ -21,10 +28,23 @@ const loginScreen = () => {
         </div>
         <div className="or">OR</div>
         <form typeof="submit">
-          <label>Email</label>
-          <input type="email" name="" id="" placeholder="Email" />
-          <label>Password</label>
-          <input type="password" name="" id="" placeholder="Password" />
+          <Input
+            onChange={(value: any) => setState({ email: value })}
+            type={"email"}
+            name={"email"}
+            value={state.email}
+            placeholder={"Email"}
+            label={"Email"}
+          />
+
+          <Input
+            onChange={(value: any) => setState({ password: value })}
+            type={"password"}
+            name={"password"}
+            value={state.password}
+            placeholder={"Password"}
+            label={"Password"}
+          />
           <div className="form_footer">
             <div className="remember">
               <input type="radio" name="" id="" />
@@ -32,11 +52,20 @@ const loginScreen = () => {
             </div>
             <div className="forgetpwd">Forget Password</div>
           </div>
-          <button className="login_btn">LOGIN</button>
+          <PrimaryButton
+            text={"LOG IN"}
+            backgroundColor={"#000000"}
+            style={{ borderRadius: "0px" }}
+            fontFamily={"Jost"}
+            fontSize={"14px"}
+            fontWeight={500}
+            letterSpacing={"2px"}
+            padding={"0.5rem"}
+          />
         </form>
       </div>
     </div>
   );
 };
 
-export default loginScreen;
+export default LoginScreen;

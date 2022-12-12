@@ -6,9 +6,10 @@ import instagram from "../assets/icons/instagram.svg";
 import filter_active from "../assets/icons/filter_active.svg";
 import filter_inactive from "../assets/icons/filter_inactive.svg";
 import pagination from "../assets/icons/pagination.svg";
-import fbLogo from "../assets/icons/fb-logo1.png";
-import GoogleLogo from "../assets/icons/google-logo.png";
-
+import cart_close from "../assets/icons/cart_close.svg";
+import right_arrow_splide from "../assets/icons/right_arrow_splide.svg";
+import fb_logo from "../assets/icons/fb_logo.svg";
+import google_logo from "../assets/icons/google-logo.png";
 const Assets = {
   cart,
   logo,
@@ -18,8 +19,10 @@ const Assets = {
   filter_active,
   filter_inactive,
   pagination,
-  fbLogo,
-  GoogleLogo,
+  right_arrow_splide,
+  cart_close,
+  fb_logo,
+  google_logo,
 };
 
 export default Assets;

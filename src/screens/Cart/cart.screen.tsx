@@ -1,242 +1,97 @@
-import "./cart.screen.scss";
-
-// Default theme
-import "@splidejs/react-splide/css";
-import { shopSize } from "../../utils/redux.utils";
-import _ from "lodash";
-import { useSelector } from "react-redux";
-import { RatingStar } from "rating-star";
-import { useSetState } from "../../utils/function.utils";
 import PrimaryButton from "../../common_components/ui/button/primary_Button.ui";
+import CartDetails from "../../common_components/ui/cart_details/cart_details.ui";
+import "./cart.screen.scss";
+import Input from "../../common_components/ui/input_field/input_field.ui";
+import { useSetState } from "../../utils/function.utils";
+import Splider from "../../common_components/ui/splider/splider.ui";
 
 const Cart = () => {
-  const size_data: any = useSelector((state: any) => state.shop);
   const [state, setState] = useSetState({
-    rating: 16,
-    quantity: 1,
+    discount: "",
   });
-  // const onRatingChange = (score:any) => {
-  //   setRating(score);
-  // };
-  let size = [
-    {
-      value: "S",
-      label: "S",
-    },
-    {
-      value: "M",
-      label: "M",
-    },
-    {
-      value: "L",
-      label: "L",
-    },
-    {
-      value: "XL",
-      label: "XL",
-    },
-    {
-      value: "2XL",
-      label: "2XL",
-    },
-  ];
-  const sizeFilter = (item: any, index: number) => {
-    if (_.isEqual(size_data.data.toString(), item.value.toString())) {
-      shopSize("");
-    } else {
-      shopSize(item.value);
-    }
-  };
-
   return (
-    <section className="cart_container">
-      <div className="cart_wrapper">
-        <div className="cart_img">
-          <img
-            src="https://res.cloudinary.com/denokpulg/image/upload/v1669808571/menswear/card/Img_5_huxd3x.jpg"
-            alt=""
-          />
+    <section className="cart">
+      <div className="cart_container">
+        <div className="cart-header">
+          <div className="cart_title">My Cart</div>
+          <div className="cart_desc">Items are reserved for 60 minutes</div>
         </div>
-        <div className="cart_content">
-          <div className="cart_title">
-            Under Armour Training Stretch Woven Half Zip Jacket.
+        <div className="cart_wrapper">
+          <div className="cart_product_list">
+            <div className="cart_product_header">
+              <div className="product_title">Product</div>
+              <div className="price_title">Price</div>
+              <div className="quantity_title">Quantity</div>
+              <div className="total_title">Total</div>
+            </div>
+            <div className="cart_list_items">
+              <CartDetails />
+              <CartDetails />
+              <CartDetails />
+            </div>
+            <div className="cart_sub_total_value">
+              <div className="card_detail"></div>
+              <div className="cart_sub_total">Sub-total</div>
+              <div className="cart_total_value">$400</div>
+            </div>
           </div>
-          <div className="cart_review">
-            <div className="cart_review_icon">
-              <RatingStar
-                maxScore={100}
-                id="review_rating"
-                rating={state.rating}
-                colors={{ mask: "black" }}
-                noBorder
-                // onRatingChange={onRatingChange}
+          <div className="cart_total_value_list">
+            <div className="cart_total_header">CART TOTAL</div>
+            <div className="cart_quantity_value cart_total">
+              <div className="quantity__title cart_total_title">Quantity</div>
+              <div className="quantity__value ">4*$200</div>
+            </div>
+            <div className="sub_total cart_total">
+              <div className="sub_total_title cart_total_title">Sub-total</div>
+              <div className="sub_total_value ">$800</div>
+            </div>
+            <div className="discount cart_total">
+              <div className="discount_title cart_total_title">Discount</div>
+              <div className="discount_value ">$0</div>
+            </div>
+            <div className="line"></div>
+            <div className="total cart_total">
+              <div className="total_title cart_total_title">Total</div>
+              <div className="total_value ">$800</div>
+            </div>
+            <div className="checkout">
+              <PrimaryButton
+                text={"PROCEED TO CHECKOUT"}
+                backgroundColor={"#000000"}
+                style={{ borderRadius: "0px", border: "#000000 2px solid" }}
+                fontFamily={"Jost"}
+                fontSize={"14px"}
+                fontWeight={600}
+                letterSpacing={"2px"}
               />
             </div>
-            <div className="cart_review_text">16 Reviews</div>
-          </div>
-          <div className="cart_amount">$200</div>
-          <div className="cart_colors">
-            <div className="cart_color_title">COLOR</div>
-            <div className="cart_color">
-              <div className="color_box_purple"></div>
-              <div className="color_box_white"></div>
-              <div className="color_box_gray"></div>
-              <div className="color_box_red"></div>
-            </div>
-          </div>
-          <div className="cart_size">
-            <div className="cart_size_header">
-              <div className="cart_size_title">SIZE</div>
-              <div className="size_value">{size_data.data}</div>
-            </div>
-            <div className="cart_size_items">
-              {size.map((item: any, index: number) => {
-                return (
-                  <div
-                    className={
-                      size_data.data === item.value
-                        ? "cart_wrapper_box_active"
-                        : "cart_wrapper_box"
-                    }
-                    onClick={() => sizeFilter(item, index)}
-                    key={index}
-                  >
-                    <div className="cart_item_size">{item.label}</div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div className="cart_quantity">
-            <div className="cart_quantity_header">
-              <div className="cart_quantity_title">QUANTITY</div>
-            </div>
-            <div className="cart_quantity_value">
-              <div
-                className="quantity_decrement"
-                onClick={() => setState({ quantity: state.quantity - 1 })}
-              >
-                --
-              </div>
-              <div className="quantity_value">{state.quantity}</div>
-              <div
-                className="quantity_increment"
-                onClick={() => setState({ quantity: state.quantity + 1 })}
-              >
-                +
-              </div>
-            </div>
-          </div>
-          <div className="add_cart">
-            <PrimaryButton
-              text={"ADD TO BAG"}
-              backgroundColor={"#000000"}
-              style={{ borderRadius: "0px", border: "#000000 2px solid" }}
-              fontFamily={"Jost"}
-              fontSize={"14px"}
-              fontWeight={600}
-              letterSpacing={"2px"}
-            />
-          </div>
-          <div className="cart_buy_now">
-            <PrimaryButton
-              text={"BUY NOW"}
-              backgroundColor={"#ffffff"}
-              style={{ borderRadius: "0px", border: "#000000 2px solid" }}
-              fontFamily={"Jost"}
-              fontSize={"14px"}
-              fontWeight={600}
-              letterSpacing={"2px"}
-              color={"#000000"}
-            />
           </div>
         </div>
-
-        {/* <div className="best_seller">
-          <div className="best_seller_header">
-            <div className="best_seller_title">Best Seller</div>
-            <div className="best_seller_view">View All</div>
+        <div className="discount_wrapper">
+          <div className="discount_header">Got a Discount Code?</div>
+          <div className="discount_code">
+            <Input
+              onChange={(value: any) => setState({ discount: value })}
+              width={"250px"}
+              type={"text"}
+              name={"discount"}
+              value={state.discount}
+              placeholder={"Enter Your Code"}
+            />
+            <PrimaryButton
+                text={"APPLY"}
+                backgroundColor={"#000000"}
+                style={{ borderRadius: "0px", border: "#000000 2px solid" }}
+                fontFamily={"Jost"}
+                fontSize={"14px"}
+                fontWeight={600}
+                letterSpacing={"2px"}
+                width={"250px"}
+              />
           </div>
-          <div className="best_seller_list">
-            <Splide
-              options={{
-                type: "loop",
-                drag: "free",
-                focus: "center",
-                fixedWidth: "270px",
-                autoplay: true,
-                perPage: 5,
-                autoScroll: {
-                  speed: 10,
-                },
-                autoStart: true,
-              }}
-              aria-label="Testmonials"
-            >
-              <SplideSlide>
-                <div className="best_seller_card">
-                  <img
-                    src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                    alt=""
-                  />
-                  <div className="best_seller_content">
-                    Under Armour Training stretch woven half zip jacket in white
-                  </div>
-                  <div className="best_seller_footer">$222</div>
-                </div>
-              </SplideSlide>
-              <SplideSlide>
-                <div className="best_seller_card">
-                  <img
-                    src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                    alt=""
-                  />
-                  <div className="best_seller_content">
-                    Under Armour Training stretch woven half zip jacket in white
-                  </div>
-                  <div className="best_seller_footer">$222</div>
-                </div>
-              </SplideSlide>
-              <SplideSlide>
-                <div className="best_seller_card">
-                  <img
-                    src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                    alt=""
-                  />
-                  <div className="best_seller_content">
-                    Under Armour Training stretch woven half zip jacket in white
-                  </div>
-                  <div className="best_seller_footer">$222</div>
-                </div>
-              </SplideSlide>
-              <SplideSlide>
-                <div className="best_seller_card">
-                  <img
-                    src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                    alt=""
-                  />
-                  <div className="best_seller_content">
-                    Under Armour Training stretch woven half zip jacket in white
-                  </div>
-                  <div className="best_seller_footer">$222</div>
-                </div>
-              </SplideSlide>
-              <SplideSlide>
-                <div className="best_seller_card">
-                  <img
-                    src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                    alt=""
-                  />
-                  <div className="best_seller_content">
-                    Under Armour Training stretch woven half zip jacket in white
-                  </div>
-                  <div className="best_seller_footer">$222</div>
-                </div>
-              </SplideSlide>
-            </Splide>
-          </div>
-        </div> */}
+        </div>
       </div>
+        <Splider title={"You May Also Like"}/>
     </section>
   );
 };

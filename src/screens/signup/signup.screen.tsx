@@ -18,13 +18,13 @@ const SignUpScreen = () => {
         <h2>Register</h2>
         <div className="facebook_btn">
           <div className="fb_logo">
-            <img src={Assets.fbLogo} alt="facebook" />
+            <img src={Assets.fb_logo} alt="facebook" />
           </div>
           <button>CONTINUE WITH FACEBOOK</button>
         </div>
         <div className="google_btn">
           <div className="google_logo">
-            <img src={Assets.GoogleLogo} alt="Google" />
+            <img src={Assets.google_logo} alt="Google" />
           </div>
           <button>CONTINUE WITH GOOGLE</button>
         </div>

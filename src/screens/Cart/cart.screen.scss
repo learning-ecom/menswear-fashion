@@ -1,188 +1,185 @@
 .cart_container {
-  width: 100%;
+  width: 80%;
   height: 100%;
-  .cart_wrapper {
-    width: 70%;
+  margin: auto;
+  .cart-header {
     display: flex;
-    margin: auto;
-    // justify-content: space-around;
-    gap: 70px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 50px 0;
+    flex-direction: column;
   }
-  .cart_img {
-    width: 470px;
-    height: 660px;
-  }
-  .cart_img img {
-    width: 100%;
-    height: 100%;
-  }
-  .cart_content {
-    width: 40%;
-  }
+
   .cart_title {
     font-family: Jost;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 36px;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 62px;
+    color: #000000;
   }
-  .cart_review {
+  .cart_desc {
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #666666;
+  }
+
+  .cart_wrapper {
+    width: 100%;
     display: flex;
-    gap: 10px;
+    margin: 50px auto;
+    justify-content: space-around;
+    gap: 70px;
+  }
+  .cart_product_list {
+    width: 65%;
+    border: #eeeeee 2px solid;
+  }
+
+  .cart_product_header {
+    display: flex;
+    border-bottom: #eeeeee 2px solid;
+  }
+  .cart_product_header div {
+    font-family: Jost;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    text-align: center;
+  }
+  .product_title {
+    width: 50%;
+    padding: 15px 20px;
+  }
+  .price_title {
+    width: 15%;
+    padding: 15px 0;
+  }
+  .quantity_title {
+    width: 20%;
+    padding: 15px 0;
+  }
+  .total_title {
+    width: 15%;
+    padding: 15px 0;
+  }
+  .cart_list_items {
+    height: 368px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .cart_sub_total_value {
+    display: flex;
+    width: 100%;
+    background: #eeeeee;
+  }
+  .card_detail {
+    width: 65%;
+    padding: 15px 20px;
+  }
+  .cart_sub_total {
+    width: 20%;
+    padding: 15px 0;
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 24px;
+  }
+  .cart_total_value {
+    width: 15%;
+    padding: 15px 0;
+    font-family: Jost;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+    text-align: center;
+  }
+  .cart_product_value_list {
+    width: 30%;
+  }
+  .cart_total_value_list {
+    width: 30%;
+    padding:30px  30px;
+    box-shadow: 0px 12px 30px 0px #0000000f;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .cart_total_header {
+    font-family: Jost;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+  }
+  .cart_total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cart_total_title {
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    width: 80%;
+  }
+  .quantity__value {
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 400;
+    color: #a6a2a2;
+    width: 20%;
+    text-align: left;
+  }
+  .sub_total_value {
+    font-family: Jost;
+    font-size: 18px;
+    font-weight: 600;
+    width: 20%;
+    text-align: left;
+  }
+  .discount_value {
+    font-family: Jost;
+    font-size: 14px;
+    font-weight: 500;
+    width: 20%;
+    text-align: left;
+  }
+  .line {
+    content: "";
+    border-bottom: 1px solid #eeeeee;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .total_value {
+    font-family: Jost;
+    font-size: 24px;
+    font-weight: 600;
+    width: 20%;
+    text-align: left;
+  }
+  .checkout{
+  }
+  .button_wrapper{
+    width: auto !important;
+  }
+  .discount_header{
+    //styleName: P1/18/Semi;
+font-family: Jost;
+font-size: 18px;
+font-weight: 600;
+line-height: 27px;
+
+  }
+  .discount_code{
+    display: flex;
     align-items: center;
     margin: 10px 0;
-
   }
-  #review_rating {
-    padding: 0 !important; 
-  }
-  .cart_review_text {
-    //styleName: p2/16/Book;
-font-family: Jost;
-font-size: 16px;
-font-weight: 400;
-line-height: 24px;
-color: #666666;
-
-  }
-  .cart_amount {
-    //styleName: H4/24/Medium;
-font-size: 24px;
-font-weight: 500;
-line-height: 36px;
-margin: 10px 0;
-
-
-  }
-  .cart_colors {
-
-  }
-  .cart_color_title {
-font-size: 16px;
-font-weight: 600;
-line-height: 24px;
-letter-spacing: 1px;
-
-  }
-  .cart_color {
-    display: flex;
-    gap: 10px;
-  }
-  .color_box_purple {
-    width: 44px;
-height: 44px;
-background: #1B2248;
-  }
-  .color_box_white {
-    width: 44px;
-height: 44px;
-background: #FFeFeF;
-  }
- 
-  .color_box_gray {
-    width: 44px;
-height: 44px;
-background: #EEEEEE;
-
-  }
-  .color_box_red {
-    width: 44px;
-height: 44px;
-background: #9F0B0B;
-  }
-  .cart_size{
-    margin: 10px 0;
-  }
-  .cart_size_header{
-    display: flex;
-    gap: 10px;
-  }
-  .cart_size_title{
-    font-family: Jost;
-font-size: 16px;
-font-weight: 600;
-line-height: 24px;
-letter-spacing: 1px;
-
-  }
-  .size_value{
-    font-family: Jost;
-font-size: 16px;
-font-weight: 400;
-line-height: 24px;
-color: #666666;
-  }
- 
-  .cart_size_items{
-    margin: 10px 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    cursor: pointer;
-  }
-  
-.cart_item_size{
-  font-family: Jost;
-font-size: 16px;
-font-weight: 600;
-line-height: 24px;
-  margin: auto;
-}
-.cart_wrapper_box{
-  border: #E5E5E5 2px solid;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-
-}
-.cart_wrapper_box_active{
-  border: #000000 2px solid;
-
-  width: 40px;
-  height: 40px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-.cart_quantity_title{
-  font-family: Jost;
-font-size: 16px;
-font-weight: 600;
-line-height: 24px;
-letter-spacing: 2px;
-
-}
-.cart_quantity_value{
-  display: flex;
-  margin: 10px 0;
-}
-.cart_quantity_value div{
-  font-family: Jost;
-font-size: 16px;
-font-weight: 400;
-line-height: 24px;
-
-}
-.quantity_decrement{
-  border: #E5E5E5 2px solid;
-padding: 10px 8px;
- display: inline-block;
- cursor: pointer;
- 
-}
-.quantity_value{
-  border-top: #E5E5E5 2px solid;
-  border-bottom: #E5E5E5 2px solid;
-padding: 10px 20px ;
- display: inline-block;
-}
-
-.quantity_increment{
-  border: #E5E5E5 2px solid;
-padding: 10px 8px;
- display: inline-block;
- cursor: pointer;
-}
-
 }

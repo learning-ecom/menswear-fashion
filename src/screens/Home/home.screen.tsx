@@ -1,16 +1,7 @@
 import { useState } from "react";
+import Splider from "../../common_components/ui/splider/splider.ui";
 import "./home.screen.scss";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
 
-// Default theme
-import "@splidejs/react-splide/css";
-
-// or other themes
-import "@splidejs/react-splide/css/skyblue";
-import "@splidejs/react-splide/css/sea-green";
-
-// or only core styles
-import "@splidejs/react-splide/css/core";
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -52,95 +43,14 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+        
       <div className="banner_img">
         {data.map((item: any, index) => (
           <img src={data[index]} alt="" width="100%" />
         ))}
       </div>
-      <div className="best_seller">
-        <div className="best_seller_header">
-          <div className="best_seller_title">Best Seller</div>
-          <div className="best_seller_view">View All</div>
-        </div>
-        <div className="best_seller_list">
-          <Splide
-            options={{
-              type: "loop",
-              drag: "free",
-              focus: "center",
-              fixedWidth: "270px",
-              autoplay: true,
-              perPage: 5,
-              autoScroll: {
-                speed: 10,
-              },
-              autoStart: true,
-            }}
-            aria-label="Testmonials"
-          >
-            <SplideSlide>
-              <div className="best_seller_card">
-                <img
-                  src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                  alt=""
-                />
-                <div className="best_seller_content">
-                  Under Armour Training stretch woven half zip jacket in white
-                </div>
-                <div className="best_seller_footer">$222</div>
-              </div>
-            </SplideSlide>
-            <SplideSlide>
-              <div className="best_seller_card">
-                <img
-                  src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                  alt=""
-                />
-                <div className="best_seller_content">
-                  Under Armour Training stretch woven half zip jacket in white
-                </div>
-                <div className="best_seller_footer">$222</div>
-              </div>
-            </SplideSlide>
-            <SplideSlide>
-              <div className="best_seller_card">
-                <img
-                  src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                  alt=""
-                />
-                <div className="best_seller_content">
-                  Under Armour Training stretch woven half zip jacket in white
-                </div>
-                <div className="best_seller_footer">$222</div>
-              </div>
-            </SplideSlide>
-            <SplideSlide>
-              <div className="best_seller_card">
-                <img
-                  src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                  alt=""
-                />
-                <div className="best_seller_content">
-                  Under Armour Training stretch woven half zip jacket in white
-                </div>
-                <div className="best_seller_footer">$222</div>
-              </div>
-            </SplideSlide>
-            <SplideSlide>
-              <div className="best_seller_card">
-                <img
-                  src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-                  alt=""
-                />
-                <div className="best_seller_content">
-                  Under Armour Training stretch woven half zip jacket in white
-                </div>
-                <div className="best_seller_footer">$222</div>
-              </div>
-            </SplideSlide>
-          </Splide>
-        </div>
+      <div className="splider">
+      <Splider title={"Best Seller"} view={"View"}/>
       </div>
       <div className="sales_banner">
         <img
@@ -226,17 +136,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/* <div className="best_seller_">
-        <div className="best_seller_header">
-          <div className="best_seller_title">Best Seller</div>
-          <div className="best_seller_view">View All</div>
-        </div>
-        <div className="banner_img">
-        {data.map((item: any, index) => (
-          <img src={data[index]} alt="" width="100%" />
-        ))}
-      </div>
-        </div> */}
+      
     </section>
   );
 };

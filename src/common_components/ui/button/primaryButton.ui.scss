@@ -1,4 +1,4 @@
-@import "../../../index.scss";
+@import '../../../index.scss';
 
 .button_wrapper {
   // height: 56px;
@@ -6,11 +6,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
+  // border-radius: 12px;
   color: white !important;
   background: $primaryButtonColor;
-  width: 100%;
-  // padding: 15px 20px;
+  // width: 100%;
+  padding: 15px 20px;
   // transition: 0.2s;
 }
 .primary_button_img {
@@ -19,27 +19,28 @@
   justify-content: center;
   align-items: center;
 }
-.button_blue {
-  color: #3db2ff !important;
+.button_blue{
+  color: #3DB2FF !important;
 }
-.button_red {
-  color: #fe5050 !important;
+.button_red{
+  color: #FE5050 !important;
+
 }
 .button_text {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   // color: #ffff;
   text-align: center;
-  letter-spacing: 0.04em;
+letter-spacing: 0.04em
 }
 .button_wrapper:hover {
   // background: $activeTabColor !important;
   // color: $buttonTextColor !important;
   cursor: pointer;
-  // transition: all 0.2s linear;
+  transition: all 0.2s linear;
 }
 .disabled {
   background: $inputBackground !important;

@@ -79,25 +79,14 @@ const Cart = () => {
               placeholder={"Enter Your Code"}
             />
             <PrimaryButton
-              text={"ADD TO BAG"}
+              text={"APPLY"}
               backgroundColor={"#000000"}
               style={{ borderRadius: "0px", border: "#000000 2px solid" }}
               fontFamily={"Jost"}
               fontSize={"14px"}
               fontWeight={600}
               letterSpacing={"2px"}
-            />
-          </div>
-          <div className="cart_buy_now">
-            <PrimaryButton
-              text={"BUY NOW"}
-              backgroundColor={"#ffffff"}
-              style={{ borderRadius: "0px", border: "#000000 2px solid" }}
-              fontFamily={"Jost"}
-              fontSize={"14px"}
-              fontWeight={600}
-              letterSpacing={"2px"}
-              color={"#000000"}
+              width={"250px"}
             />
           </div>
         </div>

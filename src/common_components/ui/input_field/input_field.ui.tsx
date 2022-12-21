@@ -22,6 +22,7 @@ interface IInputProps {
   width?: any;
   fontFamily?: any;
   fontSize?: any;
+  fontWeight?: any;
 }
 
 const Input = (props: IInputProps) => {
@@ -30,12 +31,6 @@ const Input = (props: IInputProps) => {
 
   return (
     <>
-      <div
-        className="login_input_field_label"
-        style={{ fontFamily: props.fontFamily, fontSize: props.fontSize }}
-      >
-        {props.label}
-      </div>
       <div
         className={
           state.focus ? "focus input_container set_bg" : "input_container"
@@ -61,7 +56,6 @@ const Input = (props: IInputProps) => {
           disabled={props?.disabled}
           placeholder={props.placeholder}
         />
-
         {props.hide !== "" && (
           <div
             className="icon_wrapper"
@@ -70,10 +64,10 @@ const Input = (props: IInputProps) => {
               props.iconOnPress();
             }}
           >
-            {props?.icon && (
+            {props.icon && (
               <img
                 src={props.icon}
-                alt="images"
+                alt="img"
                 className={`input_icon ${props.icon_class || ""}`}
               />
             )}

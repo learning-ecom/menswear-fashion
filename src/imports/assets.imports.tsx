@@ -8,8 +8,9 @@ import filter_inactive from "../assets/icons/filter_inactive.svg";
 import pagination from "../assets/icons/pagination.svg";
 import cart_close from "../assets/icons/cart_close.svg";
 import right_arrow_splide from "../assets/icons/right_arrow_splide.svg";
-import fbLogo from "../assets/icons/fb-logo1.png";
-import GoogleLogo from "../assets/icons/google-logo.png";
+import fb_logo from "../assets/icons/fb_logo.svg";
+import google_logo from "../assets/icons/google-logo.png";
+import cardsImage from "../assets/icons/image 1.svg";
 
 const Assets = {
   cart,
@@ -22,8 +23,9 @@ const Assets = {
   pagination,
   right_arrow_splide,
   cart_close,
-  fbLogo,
-  GoogleLogo,
+  fb_logo,
+  google_logo,
+  cardsImage,
 };
 
 export default Assets;

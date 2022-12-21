@@ -11,6 +11,12 @@
   padding: 2rem 2.5rem;
 }
 
+.signup_title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 26px;
+  font-weight: 700;
+}
 /* Facebook login*/
 .facebook_btn {
   display: flex;
@@ -101,14 +107,25 @@
   background-color: #eeeeee;
 }
 
-.signup_form > h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
+.google_facebook_btn {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
 }
 
 .signup_form > form {
   display: flex;
   flex-direction: column;
+}
+
+.signup_input_field_label {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Jost";
+}
+
+.input_container {
+  margin-bottom: 1rem;
 }
 
 .term {
@@ -133,12 +150,15 @@
   letter-spacing: 1.5px;
 }
 
+.button_content {
+  flex: 1;
+}
 .signup_btn:hover {
   background-color: rgb(37, 37, 37);
 }
 
-@media only screen and (min-width: 1366px) and (max-width: 1520px) {
-  .button_wrapper {
-    padding: 0;
-  }
-}
+// @media only screen and (min-width: 1366px) and (max-width: 1520px) {
+//   .button_wrapper {
+//     padding: 0;
+//   }
+// }

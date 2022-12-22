@@ -3,94 +3,129 @@
   padding-top: 2rem;
   padding-bottom: 6rem;
 
+  .login_form {
+    background-color: #ffffff;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .login_input_field {
+    display: flex;
+    flex-direction: column;
 
-.login_form {
-  background-color: #ffffff;
-  max-width: 350px;
-  margin: 0 auto;
-  padding: 2rem 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-.login_input_field {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
+    .login_input_field_label {
+      font-family: "Jost";
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
 
-/* Facebook login*/
-.google_facebook_btn {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-.button_content {
-  width: 92%;
-}
-.button_text {
-  margin-left: 15px;
-}
-.primary_button_img {
-  width: 8%;
-  text-align: left;
-  justify-content: flex-start;
-  margin-left: 13px;
-}
+  /* Facebook login*/
+  .google_facebook_btn {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .button_content {
+    flex: 1;
+  }
 
+  .primary_button_img {
+    text-align: left;
+    justify-content: flex-start;
+  }
+  .facebook_btn > button {
+    flex: 1;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+  }
 
-.or {
-  text-align: center;
-  font-size: 12px;
-  position: relative;
-  margin: 1rem;
-  font-size: 14px;
-}
+  .google_btn {
+    display: flex;
+    align-items: center;
+    border: 2px solid #eeeeee;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
 
-.or::before {
-  content: "";
-  position: absolute;
+  .google_btn:hover {
+    background-color: #f5f6f8;
+  }
+  .google_logo {
+    width: 20px;
+    display: flex;
+    margin-left: 1rem;
+  }
 
-  height: 1px;
-  width: 40%;
-  background-color: #eeeeee;
-}
-.or::after {
-  content: "";
-  position: absolute;
+  .google_logo > img {
+    width: 100%;
+  }
 
-  height: 1px;
-  width: 40%;
-  background-color: #eeeeee;
-}
+  .google_btn > button {
+    flex: 1;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
 
-.login_title {
-font-family: Jost;
-font-size: 32px;
-font-weight: 600;
-line-height: 47px;
-text-align: center;
-margin: 10px 0;
-}
+  .or {
+    text-align: center;
+    font-size: 12px;
+    position: relative;
+    margin: 1rem;
+    font-size: 14px;
+  }
 
-.input_container .input {
-  font-family: Jost;
-  font-size: 14px;
-  font-weight: 400;
-}
+  .or::before {
+    content: "";
+    position: absolute;
 
-.forget_pwd {
-  font-family: Jost;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  cursor: pointer;
-  text-align: right;
-  text-decoration: underline;
-}
-.forget_pwd:hover{
-  color: blue;
-}
+    height: 1px;
+    width: 40%;
+    background-color: #eeeeee;
+  }
+  .or::after {
+    content: "";
+    position: absolute;
 
+    height: 1px;
+    width: 40%;
+    background-color: #eeeeee;
+  }
 
+  .login_title {
+    font-family: Jost;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  .input_container {
+    margin-bottom: 1rem;
+  }
+  .login_input_field input {
+    font-size: 16px;
+  }
+  .forget_pwd {
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    cursor: pointer;
+    text-align: right;
+    text-decoration: underline;
+    margin-bottom: 0.5rem;
+  }
+  .forget_pwd:hover {
+    color: blue;
+  }
 }

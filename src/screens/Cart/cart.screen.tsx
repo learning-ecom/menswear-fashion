@@ -79,19 +79,19 @@ const Cart = () => {
               placeholder={"Enter Your Code"}
             />
             <PrimaryButton
-                text={"APPLY"}
-                backgroundColor={"#000000"}
-                style={{ borderRadius: "0px", border: "#000000 2px solid" }}
-                fontFamily={"Jost"}
-                fontSize={"14px"}
-                fontWeight={600}
-                letterSpacing={"2px"}
-                width={"250px"}
-              />
+              text={"APPLY"}
+              backgroundColor={"#000000"}
+              style={{ borderRadius: "0px", border: "#000000 2px solid" }}
+              fontFamily={"Jost"}
+              fontSize={"14px"}
+              fontWeight={600}
+              letterSpacing={"2px"}
+              width={"250px"}
+            />
           </div>
         </div>
       </div>
-        <Splider title={"You May Also Like"}/>
+      <Splider title={"You May Also Like"} />
     </section>
   );
 };

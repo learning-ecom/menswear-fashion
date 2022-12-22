@@ -13,6 +13,7 @@ const SignUpScreen = () => {
     lastname: "",
     email: "",
     password: "",
+    cpassword: "",
   });
 const navigate =useNavigate()
   const handleSignup = async () => {
@@ -41,54 +42,75 @@ const navigate =useNavigate()
   return (
     <div className="signup_container">
       <div className="signup_form">
-        <h2>Register</h2>
-        <div className="facebook_btn">
-          <div className="fb_logo">
-            <img src={Assets.fb_logo} alt="facebook" />
-          </div>
-          <button>CONTINUE WITH FACEBOOK</button>
-        </div>
-        <div className="google_btn">
-          <div className="google_logo">
-            <img src={Assets.google_logo} alt="Google" />
-          </div>
-          <button>CONTINUE WITH GOOGLE</button>
+        <h2 className="signup_title">Register</h2>
+        <div className="google_facebook_btn">
+          <PrimaryButton
+            icon={Assets.fb_logo}
+            text={"CONTINUE WITH FACEBOOK"}
+            backgroundColor={"#4267B2"}
+            fontFamily={"jost"}
+            fontSize={"14px"}
+            fontWeight={500}
+            padding={"12px 20px"}
+          />
+          <PrimaryButton
+            icon={Assets.google_logo}
+            text={"CONTINUE WITH GOOGLE"}
+            backgroundColor={"#ffffff"}
+            style={{ borderRadius: "0px", border: "#efefef 2px solid" }}
+            fontFamily={"jost"}
+            fontSize={"14px"}
+            fontWeight={500}
+            color={"#000000"}
+            padding={"12px 20px"}
+          />
         </div>
         <div className="or">OR</div>
-        <form typeof="submit">
+        <form typeof="submit" className="signup__form">
+          <label className="signup_input_field_label">Name</label>
           <Input
             onChange={(value: any) => setState({ firstname: value })}
             type={"text"}
             name={"name"}
             value={state.firstname}
             placeholder={"Name"}
-            label={"Name"}
+            fontSize={"16px"}
           />
+          <label className="signup_input_field_label">LastName</label>
           <Input
             onChange={(value: any) => setState({ lastname: value })}
             type={"text"}
             name={"lastname"}
             value={state.lastname}
             placeholder={"LastName"}
-            label={"LastName"}
+            fontSize={"16px"}
           />
-
+          <label className="signup_input_field_label">Email</label>
           <Input
             onChange={(value: any) => setState({ email: value })}
             type={"email"}
             name={"email"}
             value={state.email}
             placeholder={"Email"}
-            label={"Email"}
+            fontSize={"16px"}
           />
-
+          <label className="signup_input_field_label">Password</label>
           <Input
             onChange={(value: any) => setState({ password: value })}
             type={"password"}
             name={"password"}
             value={state.password}
             placeholder={"Password"}
-            label={"Password"}
+            fontSize={"16px"}
+          />
+          <label className="signup_input_field_label">Confirm-Password</label>
+          <Input
+            onChange={(value: any) => setState({ cpassword: value })}
+            type={"password"}
+            name={"cpassword"}
+            value={state.cpassword}
+            placeholder={"Confirm password"}
+            fontSize={"16px"}
           />
           <div className="term">
             <span>

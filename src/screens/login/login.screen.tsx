@@ -49,7 +49,8 @@ const navigate:any =useNavigate();
             backgroundColor={"#4267B2"}
             fontFamily={"jost"}
             fontSize={"14px"}
-            fontWeight={600}
+            fontWeight={500}
+            padding={"12px 20px"}
           />
           <PrimaryButton
             icon={Assets.google_logo}
@@ -58,50 +59,47 @@ const navigate:any =useNavigate();
             style={{ borderRadius: "0px", border: "#efefef 2px solid" }}
             fontFamily={"jost"}
             fontSize={"14px"}
-            fontWeight={600}
+            fontWeight={500}
             color={"#000000"}
+            padding={"12px 20px"}
           />
         </div>
         <div className="or">OR</div>
-        <div className="login_input_field">
-          <Input
-            onChange={(value: any) => setState({ email: value })}
-            type={"email"}
-            name={"email"}
-            value={state.email}
-            placeholder={"Enter the email"}
-            label={"E-mail"}
-            fontFamily={"jost"}
-            fontSize={"16px"}
-            fontWeight={500}
-          />
-
-          <Input
-            onChange={(value: any) => setState({ password: value })}
-            type={"password"}
-            name={"password"}
-            value={state.password}
-            placeholder={"Enter Password"}
-            label={"Password"}
-            fontFamily={"jost"}
-            fontSize={"16px"}
-            fontWeight={500}
-          />
-        </div>
-        <div className="forget_pwd">Forget Password</div>
-        <div className="login_btn">
-
-        <PrimaryButton
-          text={"LOG IN"}
-          backgroundColor={"#000000"}
-          style={{ borderRadius: "0px" }}
-          fontFamily={"Jost"}
-          fontSize={"14px"}
-          fontWeight={500}
-          letterSpacing={"2px"}
-          onClick={userLogin}
-        />
-        </div>
+        <form action="">
+          <div className="login_input_field">
+            <label className="login_input_field_label">Email</label>
+            <Input
+              onChange={(value: any) => setState({ email: value })}
+              type={"email"}
+              name={"email"}
+              value={state.email}
+              placeholder={"Enter the email"}
+              fontSize={"18px"}
+            />
+            <label className="login_input_field_label">Password</label>
+            <Input
+              onChange={(value: any) => setState({ password: value })}
+              type={"password"}
+              name={"password"}
+              value={state.password}
+              placeholder={"Enter Password"}
+              fontSize={"18px"}
+            />
+          </div>
+          <div className="forget_pwd">Forget Password</div>
+          <div className="login_btn">
+            <PrimaryButton
+              text={"LOG IN"}
+              backgroundColor={"#000000"}
+              style={{ borderRadius: "0px" }}
+              fontFamily={"Jost"}
+              fontSize={"14px"}
+              fontWeight={500}
+              letterSpacing={"2px"}
+              padding={"0.5rem"}
+            />
+          </div>
+        </form>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import PrimaryButton from "../../common_components/ui/button/primary_Button.ui";
 import CartDetails from "../../common_components/ui/cart_details/cart_details.ui";
 import "./cart.screen.scss";
 import Input from "../../common_components/ui/input_field/input_field.ui";
-import { useSetState } from "../../utils/function.utils";
+import { useSetState } from "../../utils/functions.utils";
 import Splider from "../../common_components/ui/splider/splider.ui";
 
 const Cart = () => {

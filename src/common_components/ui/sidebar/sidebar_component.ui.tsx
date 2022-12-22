@@ -1,4 +1,4 @@
-import { useSetState } from "../../../utils/function.utils";
+import { useSetState } from "../../../utils/functions.utils";
 import "./sidebar_component.ui.scss";
 import { Assets } from "../../../utils/imports.utils";
 

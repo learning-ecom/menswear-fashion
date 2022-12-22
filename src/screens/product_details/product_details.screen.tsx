@@ -6,7 +6,7 @@ import { shopSize } from "../../utils/redux.utils";
 import _ from "lodash";
 import { useSelector } from "react-redux";
 import { RatingStar } from "rating-star";
-import { useSetState } from "../../utils/function.utils";
+import { useSetState } from "../../utils/functions.utils";
 import PrimaryButton from "../../common_components/ui/button/primary_Button.ui";
 import Splider from "../../common_components/ui/splider/splider.ui";
 

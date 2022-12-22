@@ -37,45 +37,7 @@
   justify-content: flex-start;
   margin-left: 13px;
 }
-.facebook_btn > button {
-  flex: 1;
-  text-align: center;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  color: #fff;
-}
 
-.google_btn {
-  display: flex;
-  align-items: center;
-  border: 2px solid #eeeeee;
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
-.google_btn:hover {
-  background-color: #f5f6f8;
-}
-.google_logo {
-  width: 20px;
-  display: flex;
-  margin-left: 1rem;
-}
-
-.google_logo > img {
-  width: 100%;
-}
-
-.google_btn > button {
-  flex: 1;
-  text-align: center;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
 
 .or {
   text-align: center;

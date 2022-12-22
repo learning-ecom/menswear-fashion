@@ -3,7 +3,6 @@ import Assets from "../../imports/assets.imports";
 import Input from "../../common_components/ui/input_field/input_field.ui";
 import PrimaryButton from "../../common_components/ui/button/primary_Button.ui";
 import "./login.screen.scss";
-import user from "../../models/user.model";
 import { Model } from "../../imports/model.import";
 import { Functions } from "../../utils/imports.utils";
 import { useNavigate } from "react-router-dom";
@@ -97,6 +96,7 @@ const navigate:any =useNavigate();
               fontWeight={500}
               letterSpacing={"2px"}
               padding={"0.5rem"}
+              onClick={userLogin}
             />
           </div>
         </form>

@@ -2,15 +2,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import "./App.scss";
 import Footer from "./common_components/hoc/footer/footer.screen";
-import Home from "./screens/Home/home.screen";
+import Home from "./screens/home/home.screen"
 import Navbar from "./common_components/hoc/navbar/navbar.screen";
-import Shop from "./screens/Shop/shop.screen";
+import Shop from "./screens/shop/shop.screen";
 import store from "./store/store";
 import ProductDetails from "./screens/product_details/product_details.screen";
-import CheckoutScreen from "./screens/Checkout/checkout.screen";
-import Cart from "./screens/Cart/cart.screen";
-import Login from "./screens/Login/login.screen";
-import Signup from "./screens/Signup/signup.screen";
+import CheckoutScreen from "./screens/checkout/checkout.screen";
+import Cart from "./screens/cart/cart.screen";
+import Login from "./screens/login/login.screen";
+import Signup from "./screens/signup/signup.screen";
 
 function App() {
   return (

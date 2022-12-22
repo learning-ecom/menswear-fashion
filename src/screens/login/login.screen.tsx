@@ -1,14 +1,42 @@
-import { useSetState } from "../../utils/function.utils";
+import { useSetState } from "../../utils/functions.utils";
 import Assets from "../../imports/assets.imports";
 import Input from "../../common_components/ui/input_field/input_field.ui";
 import PrimaryButton from "../../common_components/ui/button/primary_Button.ui";
 import "./login.screen.scss";
+import { Model } from "../../imports/model.import";
+import { Functions } from "../../utils/imports.utils";
+import { useNavigate } from "react-router-dom";
 
 const LoginScreen = () => {
+  // state
   const [state, setState] = useSetState({
     email: "",
     password: "",
   });
+const navigate:any =useNavigate();
+  // userlogin
+  const userLogin =async()=>{
+    const body ={
+      email: state.email,
+      password: state.password
+    }
+    try {
+      const res:any = await Model.user.userLogin(body)
+      localStorage.setItem("id", res.data._id);
+      localStorage.setItem("role", res.data.role);
+      localStorage.setItem("token", res.token);
+      if(Object.keys(res.data).length>0){
+        navigate("/")
+       }
+      
+      setState({ firstname: "", lastname: "", email: "", password: "" });
+     } catch (error) {
+       Functions.notiflixFailure(error);
+     } finally {
+       Functions.notiflixRemove();
+     }
+   };
+
   return (
     <div className="login_container">
       <div className="login_form">
@@ -68,6 +96,7 @@ const LoginScreen = () => {
               fontWeight={500}
               letterSpacing={"2px"}
               padding={"0.5rem"}
+              onClick={userLogin}
             />
           </div>
         </form>

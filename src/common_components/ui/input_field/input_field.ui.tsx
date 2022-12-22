@@ -1,5 +1,5 @@
-import { useSetState } from "../../../utils/function.utils";
-import "./input_field.ui.scss";
+import { useSetState } from '../../../utils/functions.utils';
+import './input_field.ui.scss';
 
 interface IInputProps {
   className?: string;

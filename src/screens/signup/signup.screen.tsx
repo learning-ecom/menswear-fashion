@@ -1,18 +1,44 @@
-import React from "react";
 import "./signup.screen.scss";
 import Assets from "../../imports/assets.imports";
-import { useSetState } from "../../utils/function.utils";
+import { useSetState } from "../../utils/functions.utils";
 import PrimaryButton from "../../common_components/ui/button/primary_Button.ui";
 import Input from "../../common_components/ui/input_field/input_field.ui";
+import { Model } from "../../imports/model.import";
+import { Functions } from "../../utils/imports.utils";
+import { useNavigate } from "react-router-dom";
 
 const SignUpScreen = () => {
   const [state, setState] = useSetState({
-    name: "",
+    firstname: "",
     lastname: "",
     email: "",
     password: "",
     cpassword: "",
   });
+const navigate =useNavigate()
+  const handleSignup = async () => {
+    Functions.notiflixLoader();
+    try {
+      const body = {
+        first_name: state.firstname,
+        last_name: state.lastname,
+        email: state.email,
+        password: state.password,
+      };
+      let res: any = await Model.user.UserSignup(body);
+      localStorage.setItem("id", res.data._id);
+      localStorage.setItem("role", res.data.role);
+      localStorage.setItem("token", res.token);
+      setState({ firstname: "", lastname: "", email: "", password: "" });
+      if(Object.keys(res.data).length>0){
+        navigate("/")
+       }
+    } catch (error) {
+      Functions.notiflixFailure(error);
+    } finally {
+      Functions.notiflixRemove();
+    }
+  };
   return (
     <div className="signup_container">
       <div className="signup_form">
@@ -43,10 +69,10 @@ const SignUpScreen = () => {
         <form typeof="submit" className="signup__form">
           <label className="signup_input_field_label">Name</label>
           <Input
-            onChange={(value: any) => setState({ name: value })}
+            onChange={(value: any) => setState({ firstname: value })}
             type={"text"}
             name={"name"}
-            value={state.name}
+            value={state.firstname}
             placeholder={"Name"}
             fontSize={"16px"}
           />
@@ -100,7 +126,7 @@ const SignUpScreen = () => {
             fontSize={"14px"}
             fontWeight={500}
             letterSpacing={"2px"}
-            padding={"0.5rem"}
+            onClick={handleSignup}
           />
         </form>
       </div>

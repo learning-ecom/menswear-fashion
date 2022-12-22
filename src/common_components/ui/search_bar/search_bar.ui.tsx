@@ -1,4 +1,4 @@
-import { useSetState } from '../../../utils/function.utils';
+import { useSetState } from '../../../utils/functions.utils';
 import './search_bar.ui.scss';
 
 interface ISearchbar {

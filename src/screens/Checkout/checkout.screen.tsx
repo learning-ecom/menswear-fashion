@@ -1,4 +1,4 @@
-import { useSetState } from "../../utils/function.utils";
+import { useSetState } from "../../utils/functions.utils";
 import Input from "../../common_components/ui/input_field/input_field.ui";
 import "./checkout.screen.scss";
 import PrimaryButton from "../../common_components/ui/button/primary_Button.ui";

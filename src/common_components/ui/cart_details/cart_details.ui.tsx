@@ -1,5 +1,5 @@
 import Assets from "../../../imports/assets.imports";
-import { useSetState } from "../../../utils/function.utils";
+import { useSetState } from "../../../utils/functions.utils";
 import "./cart_details.ui.scss";
 const CartDetails = () => {
   const [state, setState] = useSetState({

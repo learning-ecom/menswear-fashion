@@ -1,27 +1,22 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 .search_input_container {
   display: flex;
   flex-direction: row;
   background-color: #ffff;
-  padding: 5px 15px;
-  border: #EEEEEE 2px solid;
+  border: #eeeeee 2px solid;
   border-radius: 1px;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  .icon_wrapper {
-    width: 25px;
-  }
+
   .input {
-    background-color:#ffff;
+    background-color: #ffff;
     border: 0px;
-    border-radius: 8px;
     outline: 0px;
     padding: 10px;
     font-size: 14px;
     color: $inputPlaceholder;
     width: 90%;
-    //font-family: 'Inter';
     font-weight: 600;
     font-size: 14px;
     line-height: 20px;

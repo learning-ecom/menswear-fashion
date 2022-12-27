@@ -1,15 +1,9 @@
+import { useSelector } from "react-redux";
 import Searchbar from "../../../common_components/ui/search_bar/search_bar.ui";
 import Assets from "../../../imports/assets.imports";
 import "./footer.screen.scss";
 const Footer = () => {
-  const follow_data: any = [
-    " https://res.cloudinary.com/denokpulg/image/upload/v1669886530/menswear/banner/1_6_usiuxf.jpg",
-    "https://res.cloudinary.com/denokpulg/image/upload/v1669886524/menswear/banner/6_rhq4va.jpg",
-    "https://res.cloudinary.com/denokpulg/image/upload/v1669886484/menswear/banner/5_2_flzxgu.jpg",
-    "https://res.cloudinary.com/denokpulg/image/upload/v1669886482/menswear/banner/4_1_kjdl9k.jpg",
-    "https://res.cloudinary.com/denokpulg/image/upload/v1669886480/menswear/banner/3_1_kulu1h.jpg",
-    "https://res.cloudinary.com/denokpulg/image/upload/v1669886480/menswear/banner/2_1_ksnfie.jpg",
-  ];
+ const image_data= useSelector((state:any)=>state.image)
   return (
     <footer className="footer">
       <div className="followus_wrapper">
@@ -18,9 +12,9 @@ const Footer = () => {
           <div className="followus_view">FOLLOW US @store</div>
         </div>
         <div className="followus_img">
-          {follow_data.map((item: any, index: number) => (
-            <div className="image_slide">
-              <img src={follow_data[index]} alt="" width="100%" />
+          {image_data?.data[0]?.footer_img.map((item: any, index: number) => (
+            <div className="image_slide" key={index}>
+              <img src={item} alt="" width="100%" />
             </div>
           ))}
         </div>

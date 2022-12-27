@@ -1,15 +1,17 @@
 import "./card.ui.scss";
-const Card = () => {
+
+interface ICard {
+  image?: string;
+  desc?: string;
+  amount?: any;
+}
+
+const Card = (props: ICard) => {
   return (
     <div className="best_seller_card">
-      <img
-        src="https://res.cloudinary.com/denokpulg/image/upload/v1669808291/menswear/card/Img_vdka54.jpg"
-        alt=""
-      />
-      <div className="best_seller_content">
-        Under Armour Training stretch woven half zip jacket in white
-      </div>
-      <div className="best_seller_footer">$222</div>
+      <img src={props.image} alt="no img" />
+      <div className="best_seller_content">{props.desc}</div>
+      <div className="best_seller_footer">{props.amount}</div>
     </div>
   );
 };

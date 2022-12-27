@@ -1,13 +1,17 @@
 import { useSetState } from "../../../utils/functions.utils";
 import "./sidebar_component.ui.scss";
 import { Assets } from "../../../utils/imports.utils";
-
 import { useSelector } from "react-redux";
 import { shopSize } from "../../../utils/redux.utils";
-import _ from "lodash";
+import PrimaryButton from "../button/primary_Button.ui";
 
 interface Isidebar {
   text?: String;
+  categories?: any;
+  brand?: any;
+  color?: any;
+  size?: any;
+  price: any;
 }
 
 const FilterSidebar = (props: Isidebar) => {
@@ -76,7 +80,7 @@ const FilterSidebar = (props: Isidebar) => {
       label: "Brown",
     },
   ];
-  let size = [
+  let size: any = [
     {
       value: "S",
       label: "S",
@@ -94,47 +98,44 @@ const FilterSidebar = (props: Isidebar) => {
       label: "XL",
     },
     {
-      value: "2XL",
+      value: "XXL",
       label: "2XL",
     },
     {
-      value: "UK6",
-      label: "UK6",
-    },
-    {
-      value: "UK7",
-      label: "UK7",
+      value: "XXXL",
+      label: "3XL",
     },
   ];
   const price: any = [
     {
-      value: "$10 - $100",
-      label: "$10 - $100",
+      value: "₹300 - ₹500",
+      label: "₹300 - ₹500",
     },
     {
-      value: "$100 - $200",
-      label: "$100 - $200",
+      value: "₹500 - ₹700",
+      label: "₹500 - ₹700",
     },
     {
-      value: "$200 - $300",
-      label: "$200 - $300",
+      value: "₹700 - ₹1000",
+      label: "₹700 - ₹1000",
     },
     {
-      value: "$300 - $400",
-      label: "$300 - $400",
+      value: "₹1000 - ₹1500",
+      label: "₹1000 - ₹1500",
     },
   ];
-  const categoriesFilter: any = (item: any, index: number) => {
+  const categoriesFilter: any = (item: any) => {
     data = state.categories_data;
-    if (data.includes(item.value)) {
+    if (data?.includes(item.value || item)) {
       data = [];
     } else {
       data = [];
       data.push(item.value);
     }
     setState({ categories_data: data });
+    props.categories(data);
   };
-  const brandFilter: any = (item: any, index: number) => {
+  const brandFilter: any = (item?: any) => {
     data = state.brand_data;
     if (data.includes(item.value)) {
       data = [];
@@ -143,18 +144,20 @@ const FilterSidebar = (props: Isidebar) => {
       data.push(item.value);
     }
     setState({ brand_data: data });
+    props.brand(data);
   };
-  const colorFilter: any = (item: any, index: number) => {
+  const colorFilter: any = (item?: any) => {
     data = state.color_data;
-    if (data.includes(item.value)) {
+    if (data.includes(item.value || item)) {
       data = [];
     } else {
       data = [];
       data.push(item.value);
     }
     setState({ color_data: data });
+    props.color(data);
   };
-  const priceFilter: any = (item: any, index: number) => {
+  const priceFilter: any = (item?: any) => {
     data = state.price_data;
     if (data.includes(item.value)) {
       data = [];
@@ -163,14 +166,31 @@ const FilterSidebar = (props: Isidebar) => {
       data.push(item.value);
     }
     setState({ price_data: data });
+    props.price(data);
   };
 
-  const sizeFilter = (item: any, index: number) => {
-    if (_.isEqual(size_data.data.toString(), item.value.toString())) {
+  const sizeFilter = (item: any) => {
+    if (size_data.data === item.value || item === "") {
       shopSize("");
+      props.size("");
     } else {
       shopSize(item.value);
+      props.size(item.value);
     }
+  };
+  const clearFilter = () => {
+    setState({
+      categories_data: "",
+      brand_data: "",
+      color_data: "",
+      price_data: "",
+    });
+    shopSize("");
+    categoriesFilter("");
+    sizeFilter("");
+    priceFilter("");
+    brandFilter("");
+    colorFilter("");
   };
 
   return (
@@ -184,7 +204,7 @@ const FilterSidebar = (props: Isidebar) => {
               return (
                 <div
                   className="filter_wrapper"
-                  onClick={() => categoriesFilter(item, index)}
+                  onClick={() => categoriesFilter(item)}
                   key={index}
                 >
                   <img
@@ -209,7 +229,7 @@ const FilterSidebar = (props: Isidebar) => {
               return (
                 <div
                   className="filter_wrapper"
-                  onClick={() => brandFilter(item, index)}
+                  onClick={() => brandFilter(item)}
                   key={index}
                 >
                   <img
@@ -234,7 +254,7 @@ const FilterSidebar = (props: Isidebar) => {
               return (
                 <div
                   className="filter_wrapper"
-                  onClick={() => colorFilter(item, index)}
+                  onClick={() => colorFilter(item)}
                   key={index}
                 >
                   <img
@@ -263,11 +283,9 @@ const FilterSidebar = (props: Isidebar) => {
                       ? "filter_wrapper_box_active"
                       : "filter_wrapper_box"
                   }
-                  onClick={() => sizeFilter(item, index)}
+                  onClick={() => sizeFilter(item)}
                   key={index}
                 >
-                
-
                   <div className="filter_item_size">{item.label}</div>
                 </div>
               );
@@ -282,7 +300,7 @@ const FilterSidebar = (props: Isidebar) => {
               return (
                 <div
                   className="filter_wrapper"
-                  onClick={() => priceFilter(item, index)}
+                  onClick={() => priceFilter(item)}
                   key={index}
                 >
                   <img
@@ -299,6 +317,19 @@ const FilterSidebar = (props: Isidebar) => {
               );
             })}
           </div>
+        </div>
+        <div className="clear_fliter">
+          <PrimaryButton
+            text={"CLEAR"}
+            onClick={clearFilter}
+            backgroundColor={"#ffffff"}
+            style={{ borderRadius: "0px", border: "#000000 2px solid" }}
+            fontFamily={"Jost"}
+            fontSize={"14px"}
+            fontWeight={600}
+            letterSpacing={"2px"}
+            color={"#000000"}
+          />
         </div>
       </div>
     </div>

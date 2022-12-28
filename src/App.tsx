@@ -11,6 +11,7 @@ import CheckoutScreen from "./screens/checkout/checkout.screen";
 import Cart from "./screens/cart/cart.screen";
 import Login from "./screens/login/login.screen";
 import Signup from "./screens/signup/signup.screen";
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -27,6 +28,25 @@ function App() {
           <Route path="/signup" element={<Signup />} />
         </Routes>
         <Footer />
+        <Toaster
+            position="top-center"
+            reverseOrder={false}
+            gutter={8}
+            containerClassName=""
+            containerStyle={{}}
+            toastOptions={{
+              className: '',
+              duration: 2000,
+              style: {
+                background: '#363636',
+                color: '#fff',
+              },
+              success: {
+                duration: 3000,
+                
+              }
+            }}
+          />
       </BrowserRouter>
     </Provider>
   );

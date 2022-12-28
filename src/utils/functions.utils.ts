@@ -1,6 +1,7 @@
 import Notiflix from "notiflix";
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useLocation } from "react-router-dom";
 
 export const useSetState = (initialState: any) => {
     const [state, setState] = useState(initialState);
@@ -54,3 +55,9 @@ Notiflix.Loading.init({
   svgSize: '60px',
   svgColor: '#9C312B',
 });
+
+
+export const useQuery = () => {
+  const { search } = useLocation();
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+};

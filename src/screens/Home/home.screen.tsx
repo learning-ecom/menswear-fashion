@@ -1,22 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Splider from "../../common_components/ui/splider/splider.ui";
+import { Model } from "../../imports/model.import";
+import { Functions } from "../../utils/imports.utils";
+import { ImageData,ProductData } from "../../utils/redux.utils";
 import "./home.screen.scss";
 
-
 const Home = () => {
+  // redux
+  const image_data: any = useSelector((state: any) => state.image);
   const [currentSlide, setCurrentSlide] = useState(0);
+  
 
-  const slide_data = [
-    "https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    "https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    "https://images.pexels.com/photos/837140/pexels-photo-837140.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    "https://res.cloudinary.com/denokpulg/image/upload/v1669807658/menswear/banner/Slider_vzxire.jpg",
-  ];
-  const data = [
-    "https://res.cloudinary.com/denokpulg/image/upload/v1669807883/menswear/banner/1_1_thbjfl.jpg",
-    "https://res.cloudinary.com/denokpulg/image/upload/v1669807832/menswear/banner/2_1_ovgtzy.jpg",
-    "https://res.cloudinary.com/denokpulg/image/upload/v1669807830/menswear/banner/3_mpah5w.jpg",
-  ];
+  // allimage
+  const getImage = async () => {
+    Functions.notiflixLoader();
+
+    try {
+      const res: any = await Model.image.getImage();
+   
+      ImageData(res.data);
+    } catch (error) {
+      Functions.notiflixFailure(error);
+    } finally {
+      Functions.notiflixRemove();
+    }
+  };
+
+  // all product
+  const getAllProduct = async () => {
+    Functions.notiflixLoader();
+    try {
+      const res: any = await Model.product.getAllProduct();
+      ProductData(res.data);
+    } catch (error) {
+      Functions.notiflixFailure(error);
+    } finally {
+      Functions.notiflixRemove();
+    }
+  };
+  useEffect(() => {
+    getImage();
+    getAllProduct()
+  }, []);
+
   const prevSlide = () => {
     setCurrentSlide(currentSlide === 0 ? 3 : (prev) => prev - 1);
   };
@@ -30,8 +57,8 @@ const Home = () => {
           className="banner"
           style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
         >
-          {slide_data.map((item: any, index) => (
-            <img src={slide_data[index]} alt="" width="100%" />
+          {image_data?.data[0]?.banner?.map((item: any, index: number) => (
+            <img src={item} alt="" width="100%" key={index} />
           ))}
         </div>
         <div className="icons">
@@ -43,55 +70,35 @@ const Home = () => {
           </div>
         </div>
       </div>
-        
+
       <div className="banner_img">
-        {data.map((item: any, index) => (
-          <img src={data[index]} alt="" width="100%" />
+        {image_data?.data[0]?.short_banner?.map((item: any, index: number) => (
+          <img src={item} alt="" width="100%" key={index} />
         ))}
       </div>
       <div className="splider">
-      <Splider title={"Best Seller"} view={"View"}/>
+        <Splider title={"Best Seller"} view={"View"} />
       </div>
       <div className="sales_banner">
-        <img
-          src="https://res.cloudinary.com/denokpulg/image/upload/v1669807983/menswear/banner/1_2_lxq9ul.jpg"
-          alt=""
-        />
+        {image_data?.data[0]?.autumn?.map((item: any, index: number) => (
+          <img src={item} alt="" width="100%" key={index} />
+        ))}
+
         <div className="banners">
-          <img
-            src="https://res.cloudinary.com/denokpulg/image/upload/v1669808017/menswear/banner/2_2_hbgyq6.jpg"
-            alt=""
-          />
-          <img
-            src="https://res.cloudinary.com/denokpulg/image/upload/v1669807972/menswear/banner/3_1_ym5fpc.jpg"
-            alt=""
-          />
+          {image_data?.data[0]?.short_autumn?.map(
+            (item: any, index: number) => (
+              <img src={item} alt="" width="100%" key={index} />
+            )
+          )}
         </div>
       </div>
       <div className="best_seller_shopby">
         <div className="best_seller_title">Shop by</div>
 
         <div className="best_seller_shop">
-          <img
-            src="https://res.cloudinary.com/denokpulg/image/upload/v1669880865/menswear/banner/1_4_wfzis8.jpg"
-            alt=""
-          />
-          <img
-            src="https://res.cloudinary.com/denokpulg/image/upload/v1669880865/menswear/banner/1_4_wfzis8.jpg"
-            alt=""
-          />
-          <img
-            src="https://res.cloudinary.com/denokpulg/image/upload/v1669880865/menswear/banner/1_4_wfzis8.jpg"
-            alt=""
-          />
-          <img
-            src="https://res.cloudinary.com/denokpulg/image/upload/v1669880865/menswear/banner/1_4_wfzis8.jpg"
-            alt=""
-          />
-          <img
-            src="https://res.cloudinary.com/denokpulg/image/upload/v1669880865/menswear/banner/1_4_wfzis8.jpg"
-            alt=""
-          />
+          {image_data?.data[0]?.shop_by?.map((item: any, index: number) => (
+            <img src={item} alt="" width="100%" key={index} />
+          ))}
         </div>
       </div>
       <div className="banner_content">
@@ -104,39 +111,15 @@ const Home = () => {
         <div className="best_seller_title">From the Journal</div>
 
         <div className="best_seller_journal">
-          <div className="best_seller_journal_card">
-            <img
-              src="https://res.cloudinary.com/denokpulg/image/upload/v1669882384/menswear/banner/Img_1_pa86mj.jpg"
-              alt=""
-            />
-            <div className="best_seller_date">MAY 15, 2020</div>
-            <div className="best_seller_content">
-              Under Armour Training stretch woven half zip jacket in white
+          {image_data?.data[0]?.journal?.map((item: any, index: number) => (
+            <div className="best_seller_journal_card" key={index}>
+              <img src={item.img} alt="" />
+              <div className="best_seller_date">{item.date}</div>
+              <div className="best_seller_content">{item.desc}</div>
             </div>
-          </div>
-          <div className="best_seller_journal_card">
-            <img
-              src="https://res.cloudinary.com/denokpulg/image/upload/v1669882384/menswear/banner/Img_1_pa86mj.jpg"
-              alt=""
-            />
-            <div className="best_seller_date">MAY 15, 2020</div>
-            <div className="best_seller_content">
-              Under Armour Training stretch woven half zip jacket in white
-            </div>
-          </div>
-          <div className="best_seller_journal_card">
-            <img
-              src="https://res.cloudinary.com/denokpulg/image/upload/v1669882384/menswear/banner/Img_1_pa86mj.jpg"
-              alt=""
-            />
-            <div className="best_seller_date">MAY 15, 2020</div>
-            <div className="best_seller_content">
-              Under Armour Training stretch woven half zip jacket in white
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-      
     </section>
   );
 };

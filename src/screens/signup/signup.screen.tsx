@@ -25,7 +25,7 @@ const navigate =useNavigate()
         email: state.email,
         password: state.password,
       };
-      let res: any = await Model.user.UserSignup(body);
+      let res: any = await Model.user.UserSignup(body); 
       localStorage.setItem("id", res.data._id);
       localStorage.setItem("role", res.data.role);
       localStorage.setItem("token", res.token);

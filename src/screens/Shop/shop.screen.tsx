@@ -50,6 +50,7 @@ const Shops = () => {
  
   // hooks
   useEffect(() => {
+   
     getAllProduct();
   },[
     state.categories_search,
@@ -114,6 +115,7 @@ const Shops = () => {
 
                 return (
                   <Card
+                  id={item._id}
                     image={item.img}
                     desc={item.desc}
                     amount={

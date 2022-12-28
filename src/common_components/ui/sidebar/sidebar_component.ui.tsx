@@ -4,6 +4,7 @@ import { Assets } from "../../../utils/imports.utils";
 import { useSelector } from "react-redux";
 import { shopSize } from "../../../utils/redux.utils";
 import PrimaryButton from "../button/primary_Button.ui";
+import { useEffect } from "react";
 
 interface Isidebar {
   text?: String;
@@ -192,7 +193,9 @@ const FilterSidebar = (props: Isidebar) => {
     brandFilter("");
     colorFilter("");
   };
-
+useEffect(()=>{
+  clearFilter()
+},[])
   return (
     <div>
       <div className="filter_containers">

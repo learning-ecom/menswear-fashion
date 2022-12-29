@@ -3,7 +3,6 @@ import "./product_details.screen.scss";
 // Default theme
 import "@splidejs/react-splide/css";
 import { shopSize } from "../../utils/redux.utils";
-import _ from "lodash";
 import { useSelector } from "react-redux";
 import { RatingStar } from "rating-star";
 import { useQuery, useSetState } from "../../utils/functions.utils";
@@ -23,8 +22,15 @@ const ProductDetails = () => {
     value: size_data.data.length > 0 ? size_data.data : "S",
   };
 
-
   // store the data it used first to update variable so used
+
+  // state
+  const [state, setState] = useSetState({
+    quantity: 1,
+    product_details: "",
+    available_product: false,
+    cart_data:0
+  });
 
   let size: any = [
     {
@@ -53,12 +59,6 @@ const ProductDetails = () => {
     },
   ];
 
-  // state
-  const [state, setState] = useSetState({
-    quantity: 1,
-    product_details: "",
-    available_product: false,
-  });
 
   //  query
   const query: any = useQuery();
@@ -81,17 +81,56 @@ const ProductDetails = () => {
       Functions.notiflixFailure(error);
     } finally {
       Functions.notiflixRemove();
+    }   
+  };
+  // createCart
+  const createCart = async (data?:any) => {
+    Functions.notiflixLoader();
+    try {
+      if (params_id.length > 0) {
+        const query: any = {
+          product_id: params_id,
+          size: setProductSize.value,
+          quantity: state.quantity,
+        };
+        const res: any = await Model.cart.createCart(query);
+        if(res&&data.length>0){
+          getCart()
+        }
+      }
+    } catch (error) {
+      Functions.notiflixFailure(error);
+    } finally {
+      Functions.notiflixRemove();
     }
   };
 
- 
+  const getCart = async () => {    
+    Functions.notiflixLoader();
+    try {
+      const query={
+        product_id:params_id,
+        size: setProductSize.value
+      }      
+      const res: any = await Model.cart.getCart(query);
+       if(res.data){
 
+         setState({ cart_data: res.data?.quantity });
+       }
+    } catch (error) {
+      Functions.notiflixFailure(error);
+    } finally {
+      Functions.notiflixRemove();
+    }
+  };
+       
   // const onRatingChange = (score:any) => {
   //   setRating(score);
   // };
 
   // sizeFilter
   const sizeFilter = (item: any) => {
+    //  setState({cart_data:0})
     if (product_data && product_data?.stock[0][item.value] === 0) {
       shopSize(item.value);
       setState({ available_product: true });
@@ -100,24 +139,42 @@ const ProductDetails = () => {
       setState({ available_product: false });
     }
   };
-  const addToBag=()=>{
-    if(product_data?.stock[0][setProductSize.value]< state.quantity){
-       Functions.notiflixFailure(`Available ${product_data?.stock[0][setProductSize.value]} Stocks Only` )
+  
+  
+ 
+  const addToBag = () => {
+    // getCart()
+  //   console.log('let',cart_data );
+    if(state.cart_data!==0&&state.cart_data + state.quantity > product_data?.stock[0][setProductSize.value]){
+      Functions.notiflixFailure(
+        `Available ${product_data?.stock[0][setProductSize.value]-state.cart_data} Stocks Only`
+      );
     }
-    else{
-      
+    else if(product_data?.stock[0][setProductSize.value] < state.quantity) {
+      Functions.notiflixFailure(
+        `Available ${product_data?.stock[0][setProductSize.value]} Stocks Only ss`
+      );
+    } else {      
+      createCart("reload");
     }
+  };
+
+  
     
-  }
-
-
-
+    
+  
   // hooks
   useEffect(() => {
+    window.scrollTo(0, 0)
     getProduct();
-  }, []);
-
-  return (
+    // eslint-disable-next-line
+  },[])
+  
+  useEffect(() => {   
+    getCart();
+    // eslint-disable-next-line
+  }, [setProductSize.value]); 
+  return (   
     <section className="product_detail_container">
       <div className="product_detail_wrapper">
         <div className="product_detail_img">

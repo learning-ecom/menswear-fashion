@@ -17,7 +17,7 @@ const CartDetails = (props: ICartDetails) => {
       };
       const res: any = await Model.cart.deleteCartById(query);
       if (res.data) {
-        props.refresh();
+        props.refresh()
       }
     } catch (error) {
       Functions.notiflixFailure(error);

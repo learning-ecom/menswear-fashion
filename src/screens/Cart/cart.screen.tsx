@@ -5,15 +5,12 @@ import Splider from "../../common_components/ui/splider/splider.ui";
 import { Functions } from "../../utils/imports.utils";
 import { Model } from "../../imports/model.import";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import PriceDetails from "../../common_components/ui/price_details/price_details";
 import { PriceData } from "../../utils/redux.utils";
-import { useSelector } from "react-redux";
 
 const Cart = () => {
   // redux
   var subTotal: number = 0;
-  const navigate = useNavigate()
   const [state, setState] = useSetState({
     cart_data: [], 
   });

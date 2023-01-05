@@ -1,0 +1,172 @@
+@import '../../../index.scss';
+.coupon_model_wrapper{
+  width: 500px !important;
+  border-radius: 5px;
+}
+.billing_model_wrapper{
+  width: 500px !important;
+  height: 700px;
+  border-radius: 5px;
+}
+.address_model_wrapper{
+  width: 425px !important;
+  border-radius: 5px;
+}
+.invite_container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .invite_wrapper {
+    padding: 20px;
+    width: 100%;
+    border-radius: 24px;
+    .invite_header {
+      display: flex;
+      justify-content: space-between;
+      .invite_heading {
+        font-family: 'Poppins';
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 32px;
+        letter-spacing: 0px;
+        padding-bottom: 20px;
+      }
+    }
+    .invite_subheading {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 18px;
+      letter-spacing: 0px;
+      text-align: left;
+      padding-bottom: 10px;
+    }
+    .invite_send_button {
+      display: flex;
+      justify-content: space-around;
+    }
+    .send_invite_button {
+      margin: 0 0px !important;
+      padding: 12px 40px !important;
+    }
+  }
+  
+
+  
+
+.address_detail{
+  margin-left: 40px;
+  .select_address {
+    margin-top: 3px;
+  }
+  .address_name {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Jost";
+    margin: 0 0 4px 0;
+  }
+  .address {
+    font-size: 15px;
+    font-weight: 400;
+    font-family: "Jost";
+    color: #b3afaf;
+  }
+  .mobile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 3px;
+  }
+  .mobile_title {
+    font-size: 15px;
+    font-weight: 400;
+    font-family: "Jost";
+    color: #b3afaf;
+  }
+  .mobile_number {
+    font-size: 12px;
+    font-weight: 600;
+    font-family: "Jost";
+  } 
+  .invite_send_button{
+    gap:20px
+  }
+}
+  .discount_code {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+
+    .input_container{
+      margin: 0 !important;
+    }
+  }
+  .coupon_header{
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Jost";
+    margin: 20px 0 0 0;
+  }
+  .coupon_details {
+    max-height: 400px;
+    overflow-y: scroll;
+   
+  }
+    .coupon_icon_detail {
+      display: flex;
+      background-color: rgb(255, 255, 255);
+      border-bottom: 2px solid rgb(244, 239, 239);
+      margin: 10px 0 20px 0;
+      border-radius: 5px !important;
+      // border-style: dashed !important;
+      padding: 10px 16px;
+      cursor: pointer;
+      gap: 10px;
+  
+      .select_coupon {
+        margin-top: 8px;
+      }
+      .coupon_detail{
+        // display: flex;
+        // flex-direction: column;
+        // gap: 10px;
+      }
+      .coupon_code {
+        font-size: 16px;
+        font-weight: 500;
+        font-family: "Jost";
+        margin: 0 0 4px 0;
+        color: #b3afaf;
+        border: 2px solid rgb(244, 239, 239);
+        border-radius: 5px !important;
+        border-style: dashed !important;
+        display: inline-block !important;
+        padding: 5px 15px;
+      }
+      .coupon_offer {
+        font-size: 15px;
+        font-weight: 400;
+        font-family: "Jost";
+        color: #b3afaf;
+      }
+      .expries {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        // margin-top: 10px;
+      }
+      .expries_title {
+        font-size: 15px;
+        font-weight: 400;
+        font-family: "Jost";
+        color: #b3afaf;
+      }
+      .expries_date {
+        font-size: 12px;
+        font-weight: 600;
+        font-family: "Jost";
+      }
+    
+  }
+}

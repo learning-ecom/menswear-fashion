@@ -18,7 +18,6 @@ const Home = () => {
 
     try {
       const res: any = await Model.image.getImage();
-   
       ImageData(res.data);
     } catch (error) {
       Functions.notiflixFailure(error);

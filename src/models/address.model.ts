@@ -1,9 +1,9 @@
 import instance from "../utils/axios.utils";
 
-const user = {
-  UserSignup: (data?:any) => {
+const address = {
+   createAddress: (data?:any) => {
     let promise = new Promise((resolve, reject) => {
-      let url: any = "/auth/user_signup";
+      let url: any = "address/create_address";
       instance()
         .post(url, data)
         .then((res:any) => resolve(res.data))
@@ -17,9 +17,9 @@ const user = {
     });
     return promise;
   },
-  userLogin:(data?:any)=>{
+  editAddress:(data?:any)=>{
     let promise = new Promise((resolve,reject)=>{
-        let url:any='auth/user_login';
+        let url:any='/address/edit_address';
         instance()
         .post(url,data)
         .then((res:any)=>resolve(res.data))
@@ -35,9 +35,9 @@ const user = {
     })
     return promise
   },
-  getUser:(data?:any)=>{
+  defaultAddress:(data?:any)=>{
     let promise = new Promise((resolve,reject)=>{
-        let url:any='auth/get_user';
+        let url:any='/address/default_address';
         instance()
         .post(url,data)
         .then((res:any)=>resolve(res.data))
@@ -53,9 +53,9 @@ const user = {
     })
     return promise
   },
-  getManyUser:(data?:any)=>{
+  removeAddress:(data?:any)=>{
     let promise = new Promise((resolve,reject)=>{
-        let url:any='auth/get_many_user';
+        let url:any='/address/remove_address';
         instance()
         .post(url,data)
         .then((res:any)=>resolve(res.data))
@@ -74,4 +74,4 @@ const user = {
   
 };
 
-export default user;
+export default address;

@@ -1,0 +1,39 @@
+@import '../../../index.scss';
+.navbutton_wrapper {
+  cursor: pointer;
+  height: 48px;
+  width: 48px;
+  border-radius: 16px;
+  border: 1px solid $navButtonColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.navbutton_badge {
+  display: flex;
+  color: $buttonTextColor;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  right: -10px;
+  top: 0px;
+  border-radius: 10px;
+  background: $iconBadgeBackground;
+  //font-family: 'Inter';
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+}
+.navButton_border {
+  border: 1px solid #dedede;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+}
+.navbutton_image_true{
+  width: 25px;
+  height: 25px;
+}

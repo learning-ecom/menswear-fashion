@@ -29,7 +29,7 @@
     display: flex;
     gap: 10px;
     align-items: center;
-    margin: 10px 0;
+    margin-top: 10px ;
   }
   #review_rating {
     padding: 0 !important;
@@ -43,12 +43,36 @@
     color: #666666;
   }
   .product_detail_amount {
-    //styleName: H4/24/Medium;
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 36px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin: 10px 0;
+
   }
+  .best_seller_discount_amount {
+    font-family: Jost;
+font-size: 26px;
+font-weight: 700;
+}
+.best_seller_amount {
+font-family: Jost;
+font-size: 16px;
+font-weight: 500;
+color: #9d9797;
+text-decoration: line-through;
+}
+.best_seller_discount{
+font-family: Jost;
+font-size: 20px;
+font-weight: 500;
+color: #814444;
+}
+.out_of_stock{
+  font-family: Jost;
+font-size: 26px;
+font-weight: 700;
+margin: 3px 0;
+}
 
   .product_detail_color_title {
     font-size: 16px;

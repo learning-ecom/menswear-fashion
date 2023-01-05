@@ -24,78 +24,124 @@
   .billing_details {
     margin-bottom: 1rem;
   }
-
-  .checkout_text {
-    font-weight: 500;
-  }
-}
-.checkout_order {
-  flex: 0.4;
-
-  .checkout_right {
-    box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.06);
-    border: 0.5px solid $inputBackground;
-    padding: 1rem;
-    border-radius: 5px;
-  }
-  .your_order {
-    margin-bottom: 1rem;
-  }
-  .order_title {
+  .add_address_details {
     display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;
-    border-bottom: 1px solid $inputBackground;
-    margin-bottom: 1rem;
-
-    h4 {
-      font-size: 18px;
-      font-weight: 500;
-    }
-  }
-
-  .checkout_product {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-  }
-
-  .sub_total {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid $inputBackground;
-    border-top: 1px solid $inputBackground;
-    margin-bottom: 1rem;
-  }
-
-  .checkout_total {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    justify-content: space-between;
+  }
+  .remove_edit_btn {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    .button_wrapper {
+      border-radius: 5px !important;
+      padding: 3px 10px !important;
+    }
+  }
+  .delivery_address {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Jost";
+  }
+  .button_wrapper {
+    border-radius: 5px !important;
+    padding: 11px 16px !important;
+  }
+  .default_address {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Jost";
+    margin: 10px 0 0px 0;
+  }
+  .address_details {
+    max-height: 414px;
+    overflow-y: scroll;
+  }
+  .address_icon_detail {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0px;
+    border: 2px solid rgb(244, 239, 239);
+    margin: 20px 0;
+    border-radius: 5px !important;
+    border-style: dashed !important;
+    padding: 20px 16px;
+    cursor: pointer;
+    gap: 10px;
 
-    .totalPrice_text {
-      font-size: 25px;
+    .select_address {
+      margin-top: 3px;
+    }
+    .address_name {
+      font-size: 16px;
+      font-weight: 500;
+      font-family: "Jost";
+      margin: 0 0 4px 0;
+    }
+    .address {
+      font-size: 15px;
+      font-weight: 400;
+      font-family: "Jost";
+      color: #b3afaf;
+    }
+    .mobile {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 3px;
+    }
+    .mobile_title {
+      font-size: 15px;
+      font-weight: 400;
+      font-family: "Jost";
+      color: #b3afaf;
+    }
+    .mobile_number {
+      font-size: 12px;
+      font-weight: 600;
+      font-family: "Jost";
+    }
+  }
+
+  .option_address {
+    .button_wrapper {
+      margin: 10px 0;
+      border-radius: 5px !important;
+      border-style: dashed !important;
+    }
+    .primary_btn_icon {
+      width: 15px;
+      height: 15px;
+    }
+    .button_text {
+      text-align: left !important;
+      margin-left: 5px;
     }
   }
 }
-.checkout_billing input {
-  width: 100%;
-}
-
-.checkout_options {
-  border: 1px solid $inputBackground;
-  padding: 1rem;
-  background-color: $background;
-  position: relative;
-
-  .cardsImage {
-    position: absolute;
-    right: 10px;
+.billing_address {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  .checkout_text {
+    margin-bottom: 9px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Jost";
+  }
+  .input_container {
+    margin: 0 !important;
+    .input {
+      padding: 6px !important;
+    }
+    .input::-webkit-input-placeholder {
+      font-size: 15px;
+      font-weight: 400;
+      font-family: "Jost";
+      color: #b3afaf;
+    }
   }
 }
-
-.terms_conditions {
-  margin: 1rem 0;
+.invite_send_button {
+  margin-top: 35px !important;
 }

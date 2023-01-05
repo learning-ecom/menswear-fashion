@@ -125,6 +125,7 @@ const FilterSidebar = (props: Isidebar) => {
       label: "₹1000 - ₹1500",
     },
   ];
+  
   const categoriesFilter: any = (item: any) => {
     data = state.categories_data;
     if (data?.includes(item.value || item)) {

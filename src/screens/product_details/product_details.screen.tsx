@@ -199,12 +199,15 @@ const ProductDetails = () => {
               {state.product_details.ratings} Reviews
             </div>
           </div>
-          <div className="product_detail_amount">
-            {" "}
-            {state.available_product
-              ? "Out of Stock"
-              : "₹" + state.product_details.amount}
+          {state.available_product
+              ?<div className="out_of_stock">Out of Stock</div>:(
+                <div className="product_detail_amount">
+                <div className="best_seller_discount_amount">₹{state.product_details.amount-state.product_details.amount*state.product_details.discount/100}</div>
+            <div className="best_seller_amount">₹{state.product_details.amount}</div>
+            <div className="best_seller_discount">({state.product_details.discount}%OFF)</div>
           </div>
+              )
+              }
           <div className="product_detail_colors">
             <div className="product_detail_color_title">COLOR</div>
             <div className="product_detail_color">

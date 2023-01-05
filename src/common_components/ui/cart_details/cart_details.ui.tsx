@@ -17,7 +17,7 @@ const CartDetails = (props: ICartDetails) => {
       };
       const res: any = await Model.cart.deleteCartById(query);
       if (res.data) {
-        props.refresh();
+        props.refresh()
       }
     } catch (error) {
       Functions.notiflixFailure(error);
@@ -53,11 +53,11 @@ const CartDetails = (props: ICartDetails) => {
             : props.cartData?.size}
         </div>
         <div className="cart_product_price">
-          ₹{props.cartData?.product.amount}
+          ₹{props.cartData?.product.amount-props.cartData?.product.amount * props.cartData?.product.discount/100}
         </div>
         <div className="cart_product_quantity">{props.cartData?.quantity}</div>
         <div className="cart_product_total">
-          ₹{props.cartData?.quantity * props.cartData?.product.amount}
+          ₹{props.cartData?.quantity * (props.cartData?.product.amount-props.cartData?.product.amount * props.cartData?.product.discount/100)}
         </div>
       </div>
       <div className="line"></div>

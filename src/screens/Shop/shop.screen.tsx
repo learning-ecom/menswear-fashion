@@ -119,8 +119,9 @@ const Shops = () => {
                     image={item.img}
                     desc={item.desc}
                     amount={
-                      product_size? "Out of Stock" : "₹" + item.amount
+                      product_size? "Out of Stock" : item.amount
                     }
+                    discount={item.discount}
                     key={index}
                   />
                 );

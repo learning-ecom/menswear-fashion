@@ -1,11 +1,16 @@
 .best_seller_card {
     height: 456px;
     border-radius: 5px;
-    width: 270px;
-  }
+  
   .best_seller_card img {
     width: 100%;
     height: 360px;
+  }
+  .best_seller_price{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
   }
   .best_seller_content {
     font-family: Jost;
@@ -13,13 +18,29 @@
     font-weight: 400;
     line-height: 24px;
     text-align: center;
-    margin: 10px;
+    margin: 10px 10px 3px 10px;
   }
-  .best_seller_footer {
-    font-family: Jost;
+  .best_seller_discount_amount {
+        font-family: Jost;
     font-size: 16px;
+    font-weight: 600;
+    line-height: 24px
+  }
+  .best_seller_amount {
+    font-family: Jost;
+    font-size: 12px;
     font-weight: 500;
     line-height: 24px;
     text-align: center;
-    margin: 10px;
+    color: #9d9797;
+    text-decoration: line-through;
   }
+.best_seller_discount{
+  font-family: Jost;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    color: #814444;
+}
+}

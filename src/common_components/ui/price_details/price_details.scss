@@ -1,0 +1,253 @@
+@import "../../../index.scss";
+
+.cart_total_value_list {
+  width: 30%;
+  padding: 30px 30px;
+  box-shadow: 0px 12px 30px 0px #0000000f;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .cart_total_header {
+    font-family: Jost;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+  }
+  .cart_total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cart_total_title {
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    width: 80%;
+  }
+  .price_value {
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 400;
+    color: #a6a2a2;
+    width: 20%;
+    text-align: left;
+  }
+  .discount_value {
+    font-family: Jost;
+    font-size: 18px;
+    font-weight: 600;
+    width: 23%;
+    text-align: left;
+  }
+  .delivery_charges_value {
+    font-family: Jost;
+    font-size: 17px;
+    font-weight: 500;
+    width: 19%;
+    text-align: left;
+  }
+  .line {
+    content: "";
+    border-bottom: 1px solid #eeeeee;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .total_header{
+    font-family: Jost;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .total_value {
+    font-family: Jost;
+    font-size: 23px;
+    font-weight: 600;
+    width: 23%;
+    text-align: left;
+  }
+
+  .input_container {
+    margin-bottom: 0 !important;
+  }
+  .button_wrapper {
+    width: auto !important;
+  }
+  .discount_header {
+    //styleName: P1/18/Semi;
+    font-family: Jost;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+  }
+  .discount_code {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+}
+
+.checkout_order {
+  flex: 0.4;
+
+  .checkout_right {
+    box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.06);
+    border: 0.5px solid $inputBackground;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+  .coupons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .button_wrapper {
+      border-radius: 5px !important;
+      padding: 5px 16px !important;
+    }
+  }
+
+  .coupon_header {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Jost";
+    color: #756f6f;
+  }
+  .coupon_title {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: "Jost";
+  }
+
+  .coupon_offer {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Jost";
+    color: #b3afaf;
+  }
+  .your_order {
+    font-family: Jost;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+  .order_title {
+    font-family: Jost;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $inputBackground;
+    margin-bottom: 8px;
+  }
+  .products {
+    max-height: 90px;
+    overflow-y: scroll;
+  }
+  .checkout_product {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-family: Jost;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .cart_total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sub_total {
+    font-family: Jost;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 24px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid $inputBackground;
+    border-top: 1px solid $inputBackground;
+  }
+  .price_header {
+    margin-right: 5px;
+  }
+  .discount_coupon_delivery_charges {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 8px 0;
+  }
+  .cart_total_title {
+    font-family: Jost;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .discount_value,
+  .coupon_value,
+  .delivery_charges {
+    font-family: Jost;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+  .checkout_total {
+    font-family: Jost;
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 24px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #eeeeee;
+    border-top: 1px solid #eeeeee;
+
+    .totalPrice_text {
+      font-size: 25px;
+    }
+  }
+}
+.checkout_billing input {
+  width: 100%;
+}
+
+.checkout_options {
+  border: 1px solid $inputBackground;
+  padding: 1rem;
+  background-color: $background;
+  position: relative;
+  display: flex;
+  .cash_on_delivery,
+  .online_payment {
+    font-family: Jost;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    margin: 3px 0;
+  }
+}
+.payment_pic {
+  bottom: 3px;
+  position: absolute;
+  right: 10px;
+}
+
+.cardsImage {
+  height: 30px;
+}
+.terms_conditions {
+  font-family: Jost;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  margin: 15px 0;
+}

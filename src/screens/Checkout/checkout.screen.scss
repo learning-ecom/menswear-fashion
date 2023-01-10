@@ -1,0 +1,147 @@
+@import "../../index.scss";
+
+.checkout {
+  font-family: "Jost";
+  max-width: 1100px;
+  margin: 0 auto;
+  .checkout_title {
+    font-size: 35px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .checkout_container {
+    display: flex;
+  }
+}
+
+.checkout_billing {
+  flex: 0.6;
+  padding: 0 2rem;
+
+  .billing_details {
+    margin-bottom: 1rem;
+  }
+  .add_address_details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .remove_edit_btn {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    .button_wrapper {
+      border-radius: 5px !important;
+      padding: 3px 10px !important;
+    }
+  }
+  .delivery_address {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Jost";
+  }
+  .button_wrapper {
+    border-radius: 5px !important;
+    padding: 11px 16px !important;
+  }
+  .default_address {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Jost";
+    margin: 10px 0 0px 0;
+  }
+  .address_details {
+    max-height: 414px;
+    overflow-y: scroll;
+  }
+  .address_icon_detail {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0px;
+    border: 2px solid rgb(244, 239, 239);
+    margin: 20px 0;
+    border-radius: 5px !important;
+    border-style: dashed !important;
+    padding: 20px 16px;
+    cursor: pointer;
+    gap: 10px;
+
+    .select_address {
+      margin-top: 3px;
+    }
+    .address_name {
+      font-size: 16px;
+      font-weight: 500;
+      font-family: "Jost";
+      margin: 0 0 4px 0;
+    }
+    .address {
+      font-size: 15px;
+      font-weight: 400;
+      font-family: "Jost";
+      color: #b3afaf;
+    }
+    .mobile {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 3px;
+    }
+    .mobile_title {
+      font-size: 15px;
+      font-weight: 400;
+      font-family: "Jost";
+      color: #b3afaf;
+    }
+    .mobile_number {
+      font-size: 12px;
+      font-weight: 600;
+      font-family: "Jost";
+    }
+  }
+
+  .option_address {
+    .button_wrapper {
+      margin: 10px 0;
+      border-radius: 5px !important;
+      border-style: dashed !important;
+    }
+    .primary_btn_icon {
+      width: 15px;
+      height: 15px;
+    }
+    .button_text {
+      text-align: left !important;
+      margin-left: 5px;
+    }
+  }
+}
+.billing_address {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  .checkout_text {
+    margin-bottom: 9px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Jost";
+  }
+  .input_container {
+    margin: 0 !important;
+    .input {
+      padding: 6px !important;
+    }
+    .input::-webkit-input-placeholder {
+      font-size: 15px;
+      font-weight: 400;
+      font-family: "Jost";
+      color: #b3afaf;
+    }
+  }
+}
+.invite_send_button {
+  margin-top: 35px !important;
+}

@@ -11,12 +11,16 @@ import Splider from "../../common_components/ui/splider/splider.ui";
 import { Functions } from "../../utils/imports.utils";
 import { Model } from "../../imports/model.import";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 let product_data: any;
 const ProductDetails = () => {
   // redux size
   const size_data: any = useSelector((state: any) => state.shop);
-
+  const navigate: any = useNavigate();
+  //  query
+  const query: any = useQuery();
+  const params_id: any = query.get("id");
   // setSizeData
   let setProductSize: any = {
     value: size_data.data.length > 0 ? size_data.data : "S",
@@ -29,7 +33,7 @@ const ProductDetails = () => {
     quantity: 1,
     product_details: "",
     available_product: false,
-    cart_data:0
+    cart_data: 0,
   });
 
   let size: any = [
@@ -59,11 +63,6 @@ const ProductDetails = () => {
     },
   ];
 
-
-  //  query
-  const query: any = useQuery();
-  const params_id: any = query.get("id");
-
   // getProduct
   const getProduct = async () => {
     Functions.notiflixLoader();
@@ -81,10 +80,10 @@ const ProductDetails = () => {
       Functions.notiflixFailure(error);
     } finally {
       Functions.notiflixRemove();
-    }   
+    }
   };
   // createCart
-  const createCart = async (data?:any) => {
+  const createCart = async (data?: any) => {
     Functions.notiflixLoader();
     try {
       if (params_id.length > 0) {
@@ -93,10 +92,8 @@ const ProductDetails = () => {
           size: setProductSize.value,
           quantity: state.quantity,
         };
-        const res: any = await Model.cart.createCart(query);
-        if(res&&data.length>0){
-          getCart()
-        }
+        await Model.cart.createCart(query);
+        // getCart()
       }
     } catch (error) {
       Functions.notiflixFailure(error);
@@ -105,25 +102,43 @@ const ProductDetails = () => {
     }
   };
 
-  const getCart = async () => {    
+  const createSingleCart = async (data?: any) => {
     Functions.notiflixLoader();
     try {
-      const query={
-        product_id:params_id,
-        size: setProductSize.value
-      }      
-      const res: any = await Model.cart.getCart(query);
-       if(res.data){
-
-         setState({ cart_data: res.data?.quantity });
-       }
+      if (params_id.length > 0) {
+        const query: any = {
+          product_id: params_id,
+          size: setProductSize.value,
+          quantity: state.quantity,
+        };
+        await Model.singlecart.createSingleCart(query);
+        navigate(`/checkout?id=${params_id}`);
+      }
     } catch (error) {
       Functions.notiflixFailure(error);
     } finally {
       Functions.notiflixRemove();
     }
   };
-       
+
+  const getCart = async () => {
+    Functions.notiflixLoader();
+    try {
+      const query = {
+        product_id: params_id,
+        size: setProductSize.value,
+      };
+      const res: any = await Model.cart.getCart(query);
+      if (res.data) {
+        setState({ cart_data: res.data?.quantity });
+      }
+    } catch (error) {
+      Functions.notiflixFailure(error);
+    } finally {
+      Functions.notiflixRemove();
+    }
+  };
+
   // const onRatingChange = (score:any) => {
   //   setRating(score);
   // };
@@ -131,7 +146,7 @@ const ProductDetails = () => {
   // sizeFilter
   const sizeFilter = (item: any) => {
     //  setState({cart_data:0})
-    if (product_data && product_data?.stock[0][item.value] === 0) {
+    if (product_data && product_data?.stock[item.value] === 0) {
       shopSize(item.value);
       setState({ available_product: true });
     } else {
@@ -139,42 +154,44 @@ const ProductDetails = () => {
       setState({ available_product: false });
     }
   };
-  
-  
- 
-  const addToBag = () => {
-    // getCart()
-  //   console.log('let',cart_data );
-    if(state.cart_data!==0&&state.cart_data + state.quantity > product_data?.stock[0][setProductSize.value]){
+
+  const createCartData = (data:any) => {
+    if (
+      state.cart_data !== 0 &&
+      state.cart_data + state.quantity >
+        product_data?.stock[setProductSize.value]
+    ) {
       Functions.notiflixFailure(
-        `Available ${product_data?.stock[0][setProductSize.value]-state.cart_data} Stocks Only`
+        `Available ${
+          product_data?.stock[setProductSize.value] - state.cart_data
+        } Stocks Only`
       );
-    }
-    else if(product_data?.stock[0][setProductSize.value] < state.quantity) {
+    } else if (product_data?.stock[setProductSize.value] < state.quantity) {
       Functions.notiflixFailure(
-        `Available ${product_data?.stock[0][setProductSize.value]} Stocks Only ss`
+        `Available ${
+          product_data?.stock[setProductSize.value]
+        } Stocks Only `
       );
-    } else {      
+    } else if(data === "addToBag"){
       createCart("reload");
+    }
+    else if(data === "BuyNow"){
+      createSingleCart()
     }
   };
 
-  
-    
-    
-  
   // hooks
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     getProduct();
     // eslint-disable-next-line
-  },[])
-  
-  useEffect(() => {   
+  }, []);
+
+  useEffect(() => {
     getCart();
     // eslint-disable-next-line
-  }, [setProductSize.value]); 
-  return (   
+  }, [setProductSize.value]);
+  return (
     <section className="product_detail_container">
       <div className="product_detail_wrapper">
         <div className="product_detail_img">
@@ -199,15 +216,25 @@ const ProductDetails = () => {
               {state.product_details.ratings} Reviews
             </div>
           </div>
-          {state.available_product
-              ?<div className="out_of_stock">Out of Stock</div>:(
-                <div className="product_detail_amount">
-                <div className="best_seller_discount_amount">₹{state.product_details.amount-state.product_details.amount*state.product_details.discount/100}</div>
-            <div className="best_seller_amount">₹{state.product_details.amount}</div>
-            <div className="best_seller_discount">({state.product_details.discount}%OFF)</div>
-          </div>
-              )
-              }
+          {state.available_product ? (
+            <div className="out_of_stock">Out of Stock</div>
+          ) : (
+            <div className="product_detail_amount">
+              <div className="best_seller_discount_amount">
+                ₹
+                {state.product_details.amount -
+                  (state.product_details.amount *
+                    state.product_details.discount) /
+                    100}
+              </div>
+              <div className="best_seller_amount">
+                ₹{state.product_details.amount}
+              </div>
+              <div className="best_seller_discount">
+                ({state.product_details.discount}%OFF)
+              </div>
+            </div>
+          )}
           <div className="product_detail_colors">
             <div className="product_detail_color_title">COLOR</div>
             <div className="product_detail_color">
@@ -282,7 +309,7 @@ const ProductDetails = () => {
                 fontSize={"14px"}
                 fontWeight={600}
                 letterSpacing={"2px"}
-                onClick={addToBag}
+                onClick={()=>createCartData("addToBag")}
               />
             </div>
             <div className="product_detail_buy_now">
@@ -295,6 +322,7 @@ const ProductDetails = () => {
                 fontWeight={600}
                 letterSpacing={"2px"}
                 color={"#000000"}
+                onClick={()=>createCartData("BuyNow")}
               />
             </div>
           </div>

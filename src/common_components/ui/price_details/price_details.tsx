@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Model } from "../../../imports/model.import";
-import { useSetState } from "../../../utils/functions.utils";
+import { useQuery, useSetState } from "../../../utils/functions.utils";
 import { Assets, Functions } from "../../../utils/imports.utils";
 import { PriceData } from "../../../utils/redux.utils";
 import InviteModal from "../invite_modal/invite_modal";
@@ -10,14 +10,20 @@ import PrimaryButton from "../button/primary_Button.ui";
 import "./price_details.scss";
 
 const PriceDetails = (props: any) => {
+  const CouponRef: any = useRef();
+
   var subTotal: any = 0;
   var discount: any = 0;
-
-  const CouponRef: any = useRef();
+  //  query
+  const query: any = useQuery();
+  const params_id: any = query.get("id");
+  
   let priceData: any = useSelector((state: any) => state.price);
   const navigate = useNavigate();
   const [state, setState] = useSetState({
     sub_total: 0,
+    coupon_id: "",
+    payment_type: "",
     checkout_data: [],
     coupon_data: [],
     apply_coupon: [],
@@ -30,18 +36,34 @@ const PriceDetails = (props: any) => {
     online_payment: false,
     terms_condition: false,
   });
-  const getManyCheckout = async () => {
+
+  const getManyPopulateCart = async () => {
     Functions.notiflixLoader();
     try {
-      const res: any = await Model.cart.getManyCart();
+      const res: any = await Model.cart.getManyPopulateCart();
       PriceData(res.data);
-      setState({ checkout_data: res.data });
     } catch (error) {
       Functions.notiflixFailure(error);
     } finally {
       Functions.notiflixRemove();
     }
   };
+  const getSingleCart = async () => {
+    try {
+      const query:any = {
+        product_id: params_id
+      }
+      const res: any = await Model.singlecart.getSingleCart(query);
+      
+      PriceData([res.data])
+    } catch (error) {
+      Functions.notiflixFailure(error);
+    } finally {
+      Functions.notiflixRemove();
+    }
+  };
+  
+
   const getManyCoupon = async () => {
     Functions.notiflixLoader();
     try {
@@ -54,19 +76,49 @@ const PriceDetails = (props: any) => {
     }
   };
 
+  const createBooking = async () => {
+    Functions.notiflixLoader();
+    try {
+      const query:any = {
+        amount: state.total,
+        payment_type: state.payment_type,
+        user_address: {
+          name: props.addressData.name,
+          street: props.addressData.street,
+          city: props.addressData.city,
+          country: props.addressData.country,
+          pincode: props.addressData.pincode,
+          delivery_number: props.addressData.delivery_number,
+        },
+        cart: priceData.data
+      };
+      if(state.coupon_id.length>0){
+        query.coupon=state.coupon_id
+      }
+      await Model.booking.createBooking(query);
+    } catch (error) {
+      Functions.notiflixFailure(error);
+    } finally {
+      Functions.notiflixRemove();
+    }
+  };
+
   // hooks
   useEffect(() => {
-    if (props.type === "Checkout") {
-      getManyCheckout();
+    if (params_id && params_id.length>0) {
+      getSingleCart()
       getManyCoupon();
     }
+    else if(props.type === "Checkout" && !params_id){
+      getManyPopulateCart();
+      getManyCoupon();
+    }
+
     // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    subTotals();
-    handleDiscount();
-
+    handlePrice();
     // eslint-disable-next-line
   }, [priceData.data]);
 
@@ -76,27 +128,35 @@ const PriceDetails = (props: any) => {
     // eslint-disable-next-line
   }, [state.delivery_charges, state.discount, state.sub_total]);
 
-  const subTotals = () => {
+  const handlePrice = () => {
     priceData.data?.forEach((item: any) => {
       subTotal += item.quantity * item.product.amount;
-      return subTotal;
+      discount +=
+        item.quantity * item.product.amount * (item.product.discount / 100);
     });
-    setState({ sub_total: subTotal });
+    setState({ sub_total: subTotal, discount: discount});
   };
 
-  const handlePayment = (data?: any) => {
+  const handlePayment = (data: any) => {
     // payment
     if (state.cash_on_delivery) {
-      setState({ cash_on_delivery: false });
+      setState({
+        cash_on_delivery: false,
+        online_payment: true,
+        payment_type: data,
+      });
       setState({ online_payment: true });
     } else if (state.online_payment) {
-      setState({ online_payment: false });
-      setState({ cash_on_delivery: true });
+      setState({
+        online_payment: false,
+        cash_on_delivery: true,
+        payment_type: data,
+      });
     } else {
-      if (data === "cash_on_delivery") {
-        setState({ cash_on_delivery: true });
-      } else {
-        setState({ online_payment: true });
+      if (data === "Cash on Delivery") {
+        setState({ cash_on_delivery: true, payment_type: data });
+      } else if (data === "Online Payment") {
+        setState({ online_payment: true, payment_type: data });
       }
     }
   };
@@ -108,13 +168,6 @@ const PriceDetails = (props: any) => {
       setState({ terms_condition: true });
     }
   };
-  const handleDiscount = (data?: any) => {
-    priceData.data?.forEach((item: any) => {
-      discount +=
-        item.quantity * item.product.amount * (item.product.discount / 100);
-    });
-    setState({ discount: discount });
-  };
 
   const handleDeliveryCharges = () => {
     if (
@@ -125,7 +178,6 @@ const PriceDetails = (props: any) => {
     } else {
       setState({ delivery_charges: 150 });
     }
-    handleTotal();
   };
 
   const handleTotal = () => {
@@ -205,8 +257,8 @@ const PriceDetails = (props: any) => {
               />
             </div>
             <InviteModal
-              onClick={(value: any) => {
-                setState({ apply_coupon: value });
+              onClick={(value: any, couponId: any) => {
+                setState({ apply_coupon: value, coupon_id: couponId });
               }}
               couponData={state.coupon_data}
               ref={CouponRef}
@@ -219,9 +271,9 @@ const PriceDetails = (props: any) => {
               <div className="price_header">Price</div>
             </div>
             <div className="products">
-              {state.checkout_data.map((item: any,index:number) => {
+              {priceData?.data?.map((item: any, index: number) => {
                 return (
-                  <div className="checkout_product" key={index} >
+                  <div className="checkout_product" key={index}>
                     <div>
                       {item.product.brand} {item.product.categories[0]}
                     </div>
@@ -277,7 +329,7 @@ const PriceDetails = (props: any) => {
               <div className="payment">
                 <div
                   className="cash_on_delivery"
-                  onClick={() => handlePayment("cash_on_delivery")}
+                  onClick={() => handlePayment("Cash on Delivery")}
                 >
                   <img
                     src={
@@ -289,7 +341,10 @@ const PriceDetails = (props: any) => {
                   />
                   Cash on delivery
                 </div>
-                <div className="online_payment" onClick={handlePayment}>
+                <div
+                  className="online_payment"
+                  onClick={() => handlePayment("Online Payment")}
+                >
                   <img
                     src={
                       state.online_payment
@@ -329,9 +384,7 @@ const PriceDetails = (props: any) => {
               fontSize={"14px"}
               fontWeight={600}
               letterSpacing={"2px"}
-              // onClick={() => {
-              //   CouponRef.current.openModal();
-              // }}
+              onClick={createBooking}
               // color={"#000000"}
             />
           </div>

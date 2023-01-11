@@ -16,10 +16,11 @@ const Cart = () => {
   });
 
   // getManyCart
-  const getManyCart = async () => {
+  const getManyPopulateCart = async () => {
     Functions.notiflixLoader();
     try {
-      const res: any = await Model.cart.getManyCart();
+      const res: any = await Model.cart.getManyPopulateCart();
+      
       setState({cart_data:res.data})
       PriceData(res.data)
     } catch (error) {
@@ -32,7 +33,7 @@ const Cart = () => {
 
 // hooks
   useEffect(() => {
-    getManyCart();
+    getManyPopulateCart();
     // eslint-disable-next-line
   }, []);
 
@@ -61,7 +62,7 @@ const Cart = () => {
                 subTotal += item.quantity * (item.product.amount-item.product.amount*item.product.discount/100);
                 return (
                   <div key={index}>
-                    <CartDetails cartData={item} refresh={getManyCart} />
+                    <CartDetails cartData={item} refresh={getManyPopulateCart} />
                   </div>
                 );
               })}
@@ -73,69 +74,7 @@ const Cart = () => {
             </div>
           </div>
           <PriceDetails type={"Cart"} />
-          {/* <div className="cart_total_value_list">
-            <div className="cart_total_header">PRICE DETAILS</div>
-            <div className="cart_quantity_value cart_total">
-              <div className="quantity__title cart_total_title">
-                Price ({priceData.data?.length} items)
-              </div>
-              <div className="quantity__value ">₹{subTotal}</div>
-            </div>
-            <div className="sub_total cart_total">
-              <div className="sub_total_title cart_total_title">Discount</div>
-              <div className="sub_total_value  ">₹{state.discount}</div>
-            </div>
-            <div className="discount cart_total">
-              <div className="discount_title cart_total_title">
-                Delivery Charges
-              </div>
-              <div className="discount_value ">{state.delivery_charges===0 && subTotal>0?"Free":"₹"+state.delivery_charges}</div>
-            </div>
-            <div className="line"></div>
-            <div className="total cart_total">
-              <div className="total_title cart_total_title">Total</div>
-              <div className="total_value ">
-                ₹{state.total}
-              </div>
-            </div>
-            <div className="checkout">
-              <PrimaryButton
-                text={"PROCEED TO CHECKOUT"}
-                onClick={()=>{navigate('/checkout')}}
-                backgroundColor={"#000000"}
-                style={{ borderRadius: "0px", border: "#000000 2px solid" }}
-                fontFamily={"Jost"}
-                fontSize={"14px"}
-                fontWeight={600}
-                letterSpacing={"2px"}
-              />
-            </div>
-          </div> */}
-        </div>
-        {/* <div className="discount_wrapper">
-          <div className="discount_header">Got a Discount Code?</div>
-          <div className="discount_code">
-            <Input
-              onChange={(value: any) => setState({ discount_code: value })}
-              width={"250px"}
-              type={"text"}
-              name={"discount"}
-              value={state.discount_code}
-              placeholder={"Enter Your Code"}
-            />
-            <PrimaryButton
-              text={"APPLY"}
-              backgroundColor={"#000000"}
-              style={{ borderRadius: "0px", border: "#000000 2px solid" }}
-              fontFamily={"Jost"}
-              fontSize={"14px"}
-              fontWeight={600}
-              letterSpacing={"2px"}
-              width={"250px"}
-              onClick={() => handleDiscount("coupon")}
-            />
-          </div>
-        </div> */}
+      </div>
       </div>
       <Splider title={"You May Also Like"} />
     </section>

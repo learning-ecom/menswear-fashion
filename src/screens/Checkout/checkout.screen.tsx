@@ -16,12 +16,15 @@ import { Model } from "../../imports/model.import";
 import PriceDetails from "../../common_components/ui/price_details/price_details";
 
 const CheckoutScreen = () => {
-
-  var address:any
-  const ModalRef:any=useRef()
+  const ModalRef: any = useRef();
+  var address: any;
+  
   const [state, setState] = useSetState({
+    coupon_id: "",
+    cart_id: [],
+    payment_type: "",
     address_id: "",
-    address_data:[],
+    address_data: [],
     name: "",
     street: "",
     city: "",
@@ -32,25 +35,12 @@ const CheckoutScreen = () => {
     isModalOpen: false,
     user_data: {},
   });
-  const defaultAddress = (item:any) => {
-   address=state.address_data
-   if(address._id===item._id)
-    {
-      address=[]
-    }
-    else{
-      address=[]
-      address.push(item)
-    }
- setState({address_data:address})
- ModalRef.current.openModal()
-  };
-
 
   const getUser = async () => {
     try {
       const res: any = await Model.user.getUser({});
       setState({ user_data: res.data });
+      setState({ address_data: res.data?.address[0] });
     } catch (error) {
       Functions.notiflixFailure(error);
     } finally {
@@ -58,23 +48,7 @@ const CheckoutScreen = () => {
     }
   };
 
-  const defaultBillingAddress = async (address_id:any) => {
-    try {
-      const query = {
-        address_id: address_id,
-      };
-    const res:any = await Model.address.defaultAddress(query);
-    console.log('res.data',res.data);
-    
-      setState({ isModalOpen: false ,
-      });
-      getUser();
-    } catch (error) {
-      Functions.notiflixFailure(error);
-    } finally {
-      Functions.notiflixRemove();
-    }
-  };
+console.log('state.cart_id',state.cart_id);
 
   const createBillingAddress = async () => {
     try {
@@ -103,6 +77,34 @@ const CheckoutScreen = () => {
     } finally {
       Functions.notiflixRemove();
     }
+  };
+
+  const defaultBillingAddress = async (address_id: any) => {
+    try {
+      const query = {
+        address_id: address_id,
+      };
+      await Model.address.defaultAddress(query);
+
+      setState({ isModalOpen: false });
+      getUser();
+    } catch (error) {
+      Functions.notiflixFailure(error);
+    } finally {
+      Functions.notiflixRemove();
+    }
+  };
+
+  const defaultAddress = (item: any) => {
+    address = state.address_data;
+    if (address._id === item._id) {
+      address = [];
+    } else {
+      address = [];
+      address.push(item);
+    }
+    setState({ address_data: address });
+    ModalRef.current.openModal();
   };
 
   useEffect(() => {
@@ -165,7 +167,7 @@ const CheckoutScreen = () => {
               text={"Add New Address"}
               className={"send_invite_button"}
               onClick={() => {
-                setState({ 
+                setState({
                   address_id: "",
                   name: "",
                   street: "",
@@ -173,7 +175,8 @@ const CheckoutScreen = () => {
                   country: "",
                   pincode: "",
                   delivery_number: "",
-                 isModalOpen: true })
+                  isModalOpen: true,
+                });
               }}
               backgroundColor={"#000000"}
               style={{ borderRadius: "0px", border: "#000000 2px solid" }}
@@ -188,24 +191,36 @@ const CheckoutScreen = () => {
             <div className="address_details">
               {state.user_data?.address?.map((item: any, index: number) => (
                 <div className="address_icon_detail" key={index}>
-                  <div className="select_address" onClick={()=>defaultAddress(item)} >
-                      <img src={index===0?Assets.filter_active:Assets.filter_inactive} alt="" />
+                  <div
+                    className="select_address"
+                    onClick={() => defaultAddress(item)}
+                  >
+                    <img
+                      src={
+                        index === 0
+                          ? Assets.filter_active
+                          : Assets.filter_inactive
+                      }
+                      alt=""
+                    />
                   </div>
-           
-                  <div className="address_detail">
-                    <div className="checkout_address" onClick={()=>defaultAddress(item)}>
 
-                    <div className="address_name">{item.name}</div>
-                    <div className="address">{item.street + ","}</div>
-                    <div className="address">
-                      {item.city + "," + item.country + "-" + item.pincode}
-                    </div>
-                    <div className="mobile">
-                      <div className="mobile_title">Mobile:</div>
-                      <div className="mobile_number">
-                        {item.delivery_number}
+                  <div className="address_detail">
+                    <div
+                      className="checkout_address"
+                      onClick={() => defaultAddress(item)}
+                    >
+                      <div className="address_name">{item.name}</div>
+                      <div className="address">{item.street + ","}</div>
+                      <div className="address">
+                        {item.city + "," + item.country + "-" + item.pincode}
                       </div>
-                    </div>
+                      <div className="mobile">
+                        <div className="mobile_title">Mobile:</div>
+                        <div className="mobile_number">
+                          {item.delivery_number}
+                        </div>
+                      </div>
                     </div>
                     <div className="remove_edit_btn">
                       <PrimaryButton
@@ -251,10 +266,13 @@ const CheckoutScreen = () => {
                         letterSpacing={"2px"}
                       />
                     </div>
-                        <InviteModal ref={ModalRef}  address={state.address_data} type={'defaultAddress'} 
-                        onClick={defaultBillingAddress}
-                        cancel={()=>setState({address_data:[]})}
-                        />
+                    <InviteModal
+                      ref={ModalRef}
+                      address={state.address_data}
+                      type={"defaultAddress"}
+                      onClick={defaultBillingAddress}
+                      cancel={() => setState({ address_data: [] })}
+                    />
                   </div>
                 </div>
               ))}
@@ -265,7 +283,7 @@ const CheckoutScreen = () => {
               text={"Add New Address"}
               className={"send_invite_button"}
               onClick={() => {
-                setState({ 
+                setState({
                   address_id: "",
                   name: "",
                   street: "",
@@ -273,7 +291,8 @@ const CheckoutScreen = () => {
                   country: "",
                   pincode: "",
                   delivery_number: "",
-                 isModalOpen: true })
+                  isModalOpen: true,
+                });
               }}
               icon={Assets.plus}
               backgroundColor={"#ffffff"}
@@ -346,7 +365,9 @@ const CheckoutScreen = () => {
                       <div className="address_town">
                         <div className="checkout_text">Town/City*</div>
                         <Input
-                          onChange={(value: any) => setState({ city:capitalizeFirstLetter(value) })}
+                          onChange={(value: any) =>
+                            setState({ city: capitalizeFirstLetter(value) })
+                          }
                           type={"text"}
                           name={"city"}
                           value={state.city}
@@ -441,7 +462,7 @@ const CheckoutScreen = () => {
             </Modal>
           </div>
         </div>
-        <PriceDetails type={"Checkout"} />
+        <PriceDetails type={"Checkout"} addressData={state.address_data} />
       </div>
     </section>
   );

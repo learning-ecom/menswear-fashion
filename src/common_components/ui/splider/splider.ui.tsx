@@ -64,6 +64,7 @@ const Splider = (props: any) => {
                       image={item.img}
                       desc={item.desc}
                       amount={item.amount}
+                      discount={item.discount}
                     />
                   </SplideSlide>
                 )}

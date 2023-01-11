@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import Card from "../../common_components/ui/card/card.ui";
-import Dropdown from "../../common_components/ui/dropdown/dropdown.ui";
 import Pagination from "../../common_components/ui/Pagination/Pagination";
 import FilterSidebar from "../../common_components/ui/sidebar/sidebar_component.ui";
 import { Model } from "../../imports/model.import";
@@ -50,8 +49,8 @@ const Shops = () => {
  
   // hooks
   useEffect(() => {
-   
     getAllProduct();
+    // eslint-disable-next-line
   },[
     state.categories_search,
     state.brand_search,
@@ -109,9 +108,8 @@ const Shops = () => {
             <div className="product_card_item">
               {currentItem?.map((item: any, index: number) => {
 
-              let product_size:boolean= item.stock.some((size: any) => {
-                 return  size[state.size_search[0]]===0;
-                });
+              let product_size:boolean= item.stock[state.size_search]===0;
+                
 
                 return (
                   <Card

@@ -1,9 +1,9 @@
 import instance from "../utils/axios.utils";
 
-const cart = {
-  createCart: (data?: any) => {
+const booking = {
+  createBooking: (data?: any) => {
     let promise = new Promise((resolve, reject) => {
-      let url: any = "/cart/create_cart";
+      let url: any = "/booking/create_booking";
       instance()
         .post(url, data)
         .then((res: any) => resolve(res.data))
@@ -17,9 +17,9 @@ const cart = {
     });
     return promise;
   },
-  getManyCart: (data?: any) => {
+  getManyBooking: (data?: any) => {
     let promise = new Promise((resolve, reject) => {
-      let url: any = "/cart/get_many_cart";
+      let url: any = "/booking/get_many_booking";
       instance()
         .post(url, data)
         .then((res: any) => resolve(res.data))
@@ -33,27 +33,10 @@ const cart = {
     });
     return promise;
   },
-
-  getManyPopulateCart: (data?: any) => {
-    let promise = new Promise((resolve, reject) => {
-      let url: any = "/cart/get_many_populate_cart";
-      instance()
-        .post(url, data)
-        .then((res: any) => resolve(res.data))
-        .catch((err: any) => {
-          if (err.response) {
-            reject(err.response.data.message);
-          } else {
-            reject(err);
-          }
-        });
-    });
-    return promise;
-  },
-  deleteCartById: (body: any) => {
+  deleteBookingById: (body: any) => {
     
     let promise = new Promise((resolve, reject) => {
-      let url: any = "/cart/delete_cart_by_id";
+      let url: any = "/booking/delete_booking_by_id";
       instance()
         .delete(url,{ data: body })
         .then((res: any) => resolve(res.data))
@@ -67,10 +50,10 @@ const cart = {
     });
     return promise;
   },
-  getCart: (body: any) => {
+  getBooking: (body: any) => {
     
     let promise = new Promise((resolve, reject) => {
-      let url: any = "/cart/get_cart";
+      let url: any = "/booking/get_booking";
       instance()
         .post(url, body)
         .then((res: any) => resolve(res.data))
@@ -86,4 +69,4 @@ const cart = {
   },
 };
 
-export default cart;
+export default booking;

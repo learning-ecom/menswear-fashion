@@ -30,7 +30,7 @@ const navigate:any =useNavigate();
       localStorage.setItem("role", res.data.role);
       localStorage.setItem("token", res.token);
       if(Object.keys(res.data).length>0){
-        navigate("/")
+        window.location.href='/home'
        }
       
       setState({ firstname: "", lastname: "", email: "", password: "" });

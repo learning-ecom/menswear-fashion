@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import Splider from "../../common_components/ui/splider/splider.ui";
 import { Model } from "../../imports/model.import";
 import { Functions } from "../../utils/imports.utils";
@@ -10,6 +11,7 @@ const Home = () => {
   // redux
   const image_data: any = useSelector((state: any) => state.image);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate=useNavigate()
   
 
   // allimage
@@ -38,9 +40,15 @@ const Home = () => {
       Functions.notiflixRemove();
     }
   };
+  
   useEffect(() => {
-    getImage();
-    getAllProduct()
+    if (!localStorage.token) {
+      navigate('/login');
+    }
+    else{
+      getImage();
+      getAllProduct()
+    }
   }, []);
 
   const prevSlide = () => {

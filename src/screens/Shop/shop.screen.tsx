@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import Card from "../../common_components/ui/card/card.ui";
 import Pagination from "../../common_components/ui/Pagination/Pagination";
 import FilterSidebar from "../../common_components/ui/sidebar/sidebar_component.ui";
@@ -7,6 +8,7 @@ import { useSetState } from "../../utils/functions.utils";
 import { Functions } from "../../utils/imports.utils";
 import "./shop.screen.scss";
 const Shops = () => {
+  const  navigate:any=useNavigate()
   const [state, setState] = useSetState({
     currentPage: 1,
     itemPerPage: 6,
@@ -47,9 +49,16 @@ const Shops = () => {
     }
   };
  
+  useEffect(()=>{
+    if (!localStorage.token) {
+      navigate('/login');
+    }
+  },[])
   // hooks
   useEffect(() => {
+    if (localStorage.token) {
     getAllProduct();
+    }
     // eslint-disable-next-line
   },[
     state.categories_search,

@@ -7,10 +7,12 @@ import { Model } from "../../imports/model.import";
 import { useEffect } from "react";
 import PriceDetails from "../../common_components/ui/price_details/price_details";
 import { PriceData } from "../../utils/redux.utils";
+import { useNavigate } from "react-router";
 
 const Cart = () => {
   // redux
   var subTotal: number = 0;
+  const navigate=useNavigate()
   const [state, setState] = useSetState({
     cart_data: [], 
   });
@@ -29,11 +31,17 @@ const Cart = () => {
       Functions.notiflixRemove();
     }
   };
-
+  useEffect(() => {
+    if (!localStorage.token) {
+      navigate('/login');
+    }
+  }, []);
 
 // hooks
   useEffect(() => {
+    if (localStorage.token) {
     getManyPopulateCart();
+    }
     // eslint-disable-next-line
   }, []);
 

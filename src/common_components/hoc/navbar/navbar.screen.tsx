@@ -6,7 +6,7 @@ const Navbar = () => {
   const navbar_content: any = [
     {
       name: "Home",
-      route: "/",
+      route: "/home",
     },
     {
       name: "Shop",

@@ -5,7 +5,6 @@ import PrimaryButton from "../../common_components/ui/button/primary_Button.ui";
 import Input from "../../common_components/ui/input_field/input_field.ui";
 import { Model } from "../../imports/model.import";
 import { Functions } from "../../utils/imports.utils";
-import { useNavigate } from "react-router-dom";
 
 const SignUpScreen = () => {
   const [state, setState] = useSetState({
@@ -15,7 +14,6 @@ const SignUpScreen = () => {
     password: "",
     cpassword: "",
   });
-const navigate =useNavigate()
   const handleSignup = async () => {
     Functions.notiflixLoader();
     try {
@@ -31,14 +29,17 @@ const navigate =useNavigate()
       localStorage.setItem("token", res.token);
       setState({ firstname: "", lastname: "", email: "", password: "" });
       if(Object.keys(res.data).length>0){
-        navigate("/")
+        window.location.href='/home'
        }
+      
     } catch (error) {
       Functions.notiflixFailure(error);
     } finally {
       Functions.notiflixRemove();
     }
   };
+
+
   return (
     <div className="signup_container">
       <div className="signup_form">

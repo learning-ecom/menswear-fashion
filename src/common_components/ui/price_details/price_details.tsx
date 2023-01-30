@@ -2,21 +2,24 @@ import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Model } from "../../../imports/model.import";
-import { useQuery, useSetState } from "../../../utils/functions.utils";
+import { notiflixFailure, useQuery, useSetState } from "../../../utils/functions.utils";
 import { Assets, Functions } from "../../../utils/imports.utils";
 import { PriceData } from "../../../utils/redux.utils";
 import InviteModal from "../invite_modal/invite_modal";
 import PrimaryButton from "../button/primary_Button.ui";
+
 import "./price_details.scss";
 
 const PriceDetails = (props: any) => {
-  const CouponRef: any = useRef();
+ 
 
+  const CouponRef: any = useRef();
   var subTotal: any = 0;
   var discount: any = 0;
   //  query
   const query: any = useQuery();
   const params_id: any = query.get("id");
+  const session_id: any = query.get("session");
   
   let priceData: any = useSelector((state: any) => state.price);
   const navigate = useNavigate();
@@ -26,8 +29,8 @@ const PriceDetails = (props: any) => {
     payment_type: "",
     checkout_data: [],
     coupon_data: [],
-    apply_coupon: [],
-    discount_code: "",
+    apply_coupon_code:"",
+    apply_coupon: 0,
     discount: 0,
     delivery_charges: 0,
     total: 0,
@@ -36,6 +39,68 @@ const PriceDetails = (props: any) => {
     online_payment: false,
     terms_condition: false,
   });
+
+  
+    const handlePrice = () => {
+      priceData.data?.forEach((item: any) => {
+        subTotal += item.quantity * item.product.amount;
+        discount +=item.quantity * item.product.amount * (item.product.discount / 100);
+      });
+      setState({ sub_total: subTotal, discount: discount});
+    };
+  
+    // payment
+    const handlePayment = (data: any) => {
+      if (state.cash_on_delivery) {
+        setState({
+          cash_on_delivery: false,
+          online_payment: true,
+          payment_type: data,
+        });
+        setState({ online_payment: true });
+      } else if (state.online_payment) {
+        setState({
+          online_payment: false,
+          cash_on_delivery: true,
+          payment_type: data,
+        });
+      } else {
+        if (data === "Cash on Delivery") {
+          setState({ cash_on_delivery: true, payment_type: data });
+        } else if (data === "Online Payment") {
+          setState({ online_payment: true, payment_type: data });
+        }
+      }
+    };
+  
+    const handleTermsCondition = () => {
+      if (state.terms_condition) {
+        setState({ terms_condition: false });
+      } else {
+        setState({ terms_condition: true });
+      }
+    };
+  
+    const handleDeliveryCharges = () => {
+      if (
+        state.sub_total-state.discount >= state.not_delivery_charges ||
+        state.sub_total === 0
+      ) {
+        setState({ delivery_charges: 0 });
+      } else {
+        setState({ delivery_charges: 150 });
+      }
+    };
+  
+    const handleTotal = () => {
+      if (state.sub_total === 0) {
+        setState({ total: 0 });
+      } else {
+        setState({
+          total: state.delivery_charges + state.sub_total -(state.sub_total-state.discount) * state.apply_coupon / 100 -state.discount
+        });
+      }
+    };
 
   const getManyPopulateCart = async () => {
     Functions.notiflixLoader();
@@ -48,13 +113,14 @@ const PriceDetails = (props: any) => {
       Functions.notiflixRemove();
     }
   };
+
+
   const getSingleCart = async () => {
     try {
       const query:any = {
         product_id: params_id
       }
       const res: any = await Model.singlecart.getSingleCart(query);
-      
       PriceData([res.data])
     } catch (error) {
       Functions.notiflixFailure(error);
@@ -63,7 +129,7 @@ const PriceDetails = (props: any) => {
     }
   };
   
-
+// coupon get
   const getManyCoupon = async () => {
     Functions.notiflixLoader();
     try {
@@ -75,27 +141,22 @@ const PriceDetails = (props: any) => {
       Functions.notiflixRemove();
     }
   };
-
-  const createBooking = async () => {
+  
+  // create payment stripe
+  const createStripe = async () => {
     Functions.notiflixLoader();
     try {
-      const query:any = {
-        amount: state.total,
-        payment_type: state.payment_type,
-        user_address: {
-          name: props.addressData.name,
-          street: props.addressData.street,
-          city: props.addressData.city,
-          country: props.addressData.country,
-          pincode: props.addressData.pincode,
-          delivery_number: props.addressData.delivery_number,
-        },
-        cart: priceData.data
-      };
-      if(state.coupon_id.length>0){
-        query.coupon=state.coupon_id
+      setState({payment_type:"Online Payment", online_payment:true})
+      const query:any={
+        cart:priceData.data,
+        coupon_code:state.apply_coupon_code,
+        price_amount:state.sub_total-state.discount,
+        not_delivery_charges:state.not_delivery_charges
       }
-      await Model.booking.createBooking(query);
+      const res: any = await Model.stripe.createStripe(query);
+      if(props.type === "Checkout" ){
+        window.location.href=res.data
+      }
     } catch (error) {
       Functions.notiflixFailure(error);
     } finally {
@@ -103,17 +164,67 @@ const PriceDetails = (props: any) => {
     }
   };
 
+  //getStripe
+  // const getStripe = async () => {
+  //   Functions.notiflixLoader();
+  //   try {
+  //     const query:any={
+  //       session_id:session_id
+  //     }
+  //     const res: any = await Model.stripe.getStripe(query);
+  //     console.log(res)
+  //   } catch (error) {
+  //     Functions.notiflixFailure(error);
+  //   } finally {
+  //     Functions.notiflixRemove();
+  //   }
+  // };
+
+
+
+
+  const createBooking = async () => {
+    Functions.notiflixLoader();
+    try {
+      const query:any = {
+          amount: state.total,
+          name: props.addressData.name,
+          street: props.addressData.street,
+          city: props.addressData.city,
+          country: props.addressData.country,
+          pincode: props.addressData.pincode,
+          delivery_number: props.addressData.delivery_number,
+          cart: priceData.data
+      };      
+      if(state.coupon_id.length>0){
+        query.coupon=state.coupon_id
+      }
+      if(session_id && session_id.length>0){
+        query.stripe_id=session_id
+        query.payment_type='Online Payment'
+      }
+      else{
+        query.payment_type=state.payment_type
+      }
+      console.log(query)
+      await Model.booking.createBooking(query);
+      // navigate('/home')
+    } catch (error) {
+      Functions.notiflixFailure(error);
+    } finally {
+      Functions.notiflixRemove();
+    }
+  };
   // hooks
   useEffect(() => {
-    if (params_id && params_id.length>0) {
-      getSingleCart()
+    if (params_id && params_id.length>0 ) {
+      getSingleCart();
       getManyCoupon();
     }
     else if(props.type === "Checkout" && !params_id){
       getManyPopulateCart();
       getManyCoupon();
     }
-
     // eslint-disable-next-line
   }, []);
 
@@ -126,70 +237,18 @@ const PriceDetails = (props: any) => {
     handleDeliveryCharges();
     handleTotal();
     // eslint-disable-next-line
-  }, [state.delivery_charges, state.discount, state.sub_total]);
+  }, [state.delivery_charges, state.discount, state.sub_total,state.coupon_id]);
 
-  const handlePrice = () => {
-    priceData.data?.forEach((item: any) => {
-      subTotal += item.quantity * item.product.amount;
-      discount +=
-        item.quantity * item.product.amount * (item.product.discount / 100);
-    });
-    setState({ sub_total: subTotal, discount: discount});
-  };
 
-  const handlePayment = (data: any) => {
-    // payment
-    if (state.cash_on_delivery) {
-      setState({
-        cash_on_delivery: false,
-        online_payment: true,
-        payment_type: data,
-      });
-      setState({ online_payment: true });
-    } else if (state.online_payment) {
-      setState({
-        online_payment: false,
-        cash_on_delivery: true,
-        payment_type: data,
-      });
-    } else {
-      if (data === "Cash on Delivery") {
-        setState({ cash_on_delivery: true, payment_type: data });
-      } else if (data === "Online Payment") {
-        setState({ online_payment: true, payment_type: data });
+  useEffect(()=>{
+    if(props.type === "Checkout" ){
+      if(session_id &&props.addressData.name && state.total && priceData.data &&session_id?.length>0){  
+        // getStripe()
+          createBooking()
       }
     }
-  };
-
-  const handleTermsCondition = () => {
-    if (state.terms_condition) {
-      setState({ terms_condition: false });
-    } else {
-      setState({ terms_condition: true });
-    }
-  };
-
-  const handleDeliveryCharges = () => {
-    if (
-      state.sub_total >= state.not_delivery_charges ||
-      state.sub_total === 0
-    ) {
-      setState({ delivery_charges: 0 });
-    } else {
-      setState({ delivery_charges: 150 });
-    }
-  };
-
-  const handleTotal = () => {
-    if (state.sub_total === 0) {
-      setState({ total: 0 });
-    } else {
-      setState({
-        total: state.sub_total - state.discount + state.delivery_charges,
-      });
-    }
-  };
-
+    // eslint-disable-next-line
+    },[session_id,state.total,priceData.data,state.coupon_id])
   return (
     <>
       {props.type === "Cart" && (
@@ -257,8 +316,9 @@ const PriceDetails = (props: any) => {
               />
             </div>
             <InviteModal
-              onClick={(value: any, couponId: any) => {
-                setState({ apply_coupon: value, coupon_id: couponId });
+              onClick={(value: any, couponid: any,couponcode:any) => {
+               
+                setState({ apply_coupon: value, coupon_id: couponid,apply_coupon_code:couponcode });
               }}
               couponData={state.coupon_data}
               ref={CouponRef}
@@ -319,10 +379,8 @@ const PriceDetails = (props: any) => {
               <div className="totalPrice_text">
                 &#x20B9;
                 {state.sub_total > 0 &&
-                  state.delivery_charges +
-                    state.sub_total -
-                    (state.sub_total * state.apply_coupon) / 100 -
-                    state.discount}
+                  state.total
+                    }
               </div>
             </div>
             <div className="checkout_options">
@@ -353,7 +411,7 @@ const PriceDetails = (props: any) => {
                     }
                     alt=""
                   />
-                  Paypal
+                  Stripe Payment
                 </div>
               </div>
               <div className="payment_pic">
@@ -384,8 +442,10 @@ const PriceDetails = (props: any) => {
               fontSize={"14px"}
               fontWeight={600}
               letterSpacing={"2px"}
-              onClick={createBooking}
-              // color={"#000000"}
+              onClick={()=>state.payment_type==='Online Payment'?createStripe():state.payment_type==="Cash on Delivery"?createBooking():
+            notiflixFailure('please click on payment method')
+            }
+
             />
           </div>
         </div>

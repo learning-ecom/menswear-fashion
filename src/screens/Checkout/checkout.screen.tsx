@@ -14,9 +14,12 @@ import { Functions, NavButton } from "../../utils/imports.utils";
 import InviteModal from "../../common_components/ui/invite_modal/invite_modal";
 import { Model } from "../../imports/model.import";
 import PriceDetails from "../../common_components/ui/price_details/price_details";
+import { useNavigate } from "react-router";
 
 const CheckoutScreen = () => {
   const ModalRef: any = useRef();
+  const navigate=useNavigate()
+
   var address: any;
   
   const [state, setState] = useSetState({
@@ -48,7 +51,7 @@ const CheckoutScreen = () => {
     }
   };
 
-console.log('state.cart_id',state.cart_id);
+
 
   const createBillingAddress = async () => {
     try {
@@ -107,8 +110,14 @@ console.log('state.cart_id',state.cart_id);
     ModalRef.current.openModal();
   };
 
+ 
   useEffect(() => {
-    getUser();
+    if (!localStorage.token) {
+      navigate('/login');
+    }
+    else{
+      getUser();
+    }
     // eslint-disable-next-line
   }, []);
 

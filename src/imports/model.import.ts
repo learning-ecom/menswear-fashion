@@ -5,6 +5,7 @@ import cart from "../models/cart.model";
 import coupon from "../models/coupon.model";
 import address from "../models/address.model";
 import booking from "../models/booking.model";
+import stripe from "../models/stripe.model";
 import singlecart from "../models/singlecart.model";
 
 
@@ -17,5 +18,6 @@ export const Model={
     coupon,
     address,
     booking,
-    singlecart
+    singlecart,
+    stripe
 }

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Provider } from "react-redux";
 import "./App.scss";
 import Footer from "./common_components/hoc/footer/footer.screen";
@@ -11,7 +11,8 @@ import CheckoutScreen from "./screens/checkout/checkout.screen";
 import Cart from "./screens/cart/cart.screen";
 import Login from "./screens/login/login.screen";
 import Signup from "./screens/signup/signup.screen";
-import toast, { Toaster } from 'react-hot-toast';
+import  { Toaster } from 'react-hot-toast';
+
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="/login"/>} />
+          <Route path="/home" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product_details" element={<ProductDetails />} />

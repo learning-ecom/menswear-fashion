@@ -185,7 +185,7 @@ const InviteModal = forwardRef((props: any, ref) => {
                   text={"Ok"}
                   className={"send_invite_button"}
                   onClick={() => {
-                    props.onClick(state.coupon_data[0].offer_value,state.coupon_data[0]._id);
+                    props.onClick(state.coupon_data[0].offer_value,state.coupon_data[0]._id,state.coupon_data[0].code);
                     setState({ isModalOpen: false });
                   }}
                   width={"20%"}

@@ -79,9 +79,9 @@ const Input = (props: IInputProps) => {
       </div>
       {props.error &&
         props.error.map(
-          (error: any) =>
+          (error: any,index:number) =>
             props.name === error?.path && (
-              <div className="input_field_error">
+              <div className="input_field_error" key={index}>
                 {props.name === error?.path && error.message}
               </div>
             )

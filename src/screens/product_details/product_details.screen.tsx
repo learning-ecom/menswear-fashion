@@ -182,8 +182,13 @@ const ProductDetails = () => {
 
   // hooks
   useEffect(() => {
-    window.scrollTo(0, 0);
-    getProduct();
+    if (!localStorage.token) {
+      navigate('/login');
+    }
+    else{
+      window.scrollTo(0, 0);
+      getProduct();
+    }
     // eslint-disable-next-line
   }, []);
 

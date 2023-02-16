@@ -53,6 +53,8 @@ const Shops = () => {
     if (!localStorage.token) {
       navigate('/login');
     }
+    // eslint-disable-next-line
+
   },[])
   // hooks
   useEffect(() => {

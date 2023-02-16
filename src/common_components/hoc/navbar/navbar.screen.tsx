@@ -6,7 +6,7 @@ const Navbar = () => {
   const navbar_content: any = [
     {
       name: "Home",
-      route: "/",
+      route: "/home",
     },
     {
       name: "Shop",
@@ -46,7 +46,9 @@ const Navbar = () => {
                   {item.name}
                 </div>
               ))}
-              <div className="cart_icon navbar_content">
+              <div className="cart_icon " onClick={() => {
+                    navigate("/cart");
+                  }} >
                 <img src={Assets.cart} alt="cart" />
                 <div className="cart_value">3</div>
               </div>

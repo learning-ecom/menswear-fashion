@@ -5,6 +5,8 @@ import { useSetState } from '../../utils/functions.utils'
 import Footer from './footer/footer.screen'
 import Navbar from './navbar/navbar.screen'
 
+import '../hoc/main.scss'
+
 export default function Main(props: any) {
   const role:any=localStorage.getItem('role')
   const navigate:any=useNavigate()
@@ -19,9 +21,9 @@ export default function Main(props: any) {
 
    
 if(role==='admin' ){
-      navigate('/dashboard')
+      navigate('/admin/dashboard')
     }
-  })
+  }, [role])
   const setMainLoading = (loading: boolean) => {
     setState({ loading: loading });
   };
@@ -42,7 +44,14 @@ if(role==='admin' ){
   if (state.signout) window.location.href = '/';
   if (state.loading) return <div>Loading</div>;
   return role==='admin'?<>
-  <Sidebar/>{renderChildren()}
+  <div className="admin">
+    <Sidebar/>
+    <div className="right-side-content">
+      {renderChildren()}
+    </div>
+  </div>
+  
+ 
   </>:<> <Navbar/>{renderChildren()}<Footer/></>
 
 }

@@ -15,24 +15,24 @@ const Sidebar = (props: ISidebar) => {
     {
       name: 'Dashboard',
       active_name: 'dashboard',
-      // active_icon: Assets.dashboard_active,
-      // inactive_icon: Assets.dashboard_inactive,
-      route: '/dashboard',
+      active_icon: Assets.dashboard_active,
+      inactive_icon: Assets.dashboard_inactive,
+      route: '/admin/dashboard',
     },
     {
       name: 'Users',
       active_name: 'users',
-      // active_icon: Assets.users_active,
-      // inactive_icon: Assets.users_inactive,
-      route: '/users',
+      active_icon: Assets.user_active,
+      inactive_icon: Assets.user_inactive,
+      route: '/admin/users',
       user_details: 'user_details',
     },
     {
       name: 'Bookings',
       active_name: 'bookings',
-        // active_icon: Assets.bookings_active,
-        // inactive_icon: Assets.bookings_inactive,
-      route: '/bookings',
+        active_icon: Assets.bookings_active,
+        inactive_icon: Assets.bookings_inactive,
+      route: '/admin/bookings',
       booking_details: 'booking_details',
     },
     // {
@@ -45,9 +45,9 @@ const Sidebar = (props: ISidebar) => {
     {
       name: 'Products',
       active_name: 'products',
-      // active_icon: Assets.products_active,
-      // inactive_icon: Assets.notification_inactive,
-      route: '/products',
+      active_icon: Assets.product_active,
+      inactive_icon: Assets.product_inactive,
+      route: '/admin/products',
     },
     
   ];
@@ -56,9 +56,9 @@ const Sidebar = (props: ISidebar) => {
     pathname: '',
   });
  
-  useEffect(() => {
-    setState({ pathname: window.location.pathname.split('/')[1] });
-  }, [state.pathname]);
+  // useEffect(() => {
+  //   setState({ pathname: window.location.pathname.split('/')[1] });
+  // }, [state.pathname]);
 
   // logout
   const logout = async () => {
@@ -71,7 +71,6 @@ const Sidebar = (props: ISidebar) => {
   };
 
   return (
-    <div>
       <div className="sidebar_containers">
         <div className="sidebar_wrapper">
           <div className="sidebar_section">
@@ -82,9 +81,10 @@ const Sidebar = (props: ISidebar) => {
             </div>
             <div className="sidebar_menu">
               {sidebar_content.map((item: any, index: number) => {
+                console.log(item.route)
                 return (
                     <div
-                      onClick={() => navigate(item.route)}
+                      onClick={() => {navigate(item.route)}}
                       className={
                         state.pathname === item.active_name
                           ? 'sidebar_menu_list_active'
@@ -127,23 +127,21 @@ const Sidebar = (props: ISidebar) => {
               })}
               <div className="line"></div>
               <div className="sidebar_menu_logout" onClick={(()=>logout())}>
-                <div className="sidebar_icon">
-                  {/* <img
-                //  src={Assets.logout_inactive}
+                <div className="sidebar_icon" >
+                  <img
+                 src={Assets.logout_active} className="logout_active"
                     alt="icons"
                   />
                   <img
-                    // src={Assets.logout_active}
+                    src={Assets.logout_inactive} className="logout_inactive"
                     alt="icons"
-                  /> */}
-                {/* </div> */}
+                  />
                 <div className="sidebar_list_logout_name" >Logout</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   )
 }

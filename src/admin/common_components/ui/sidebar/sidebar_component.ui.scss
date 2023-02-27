@@ -16,15 +16,11 @@ background: #ffffff !important;
     width: 80%;
   }
   .sidebar_logo {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     width: 187px;
-    margin: 10px auto;
     height: 28px;
   }
   .sidebar_menu {
-    margin-top: 65px;
+    margin-top: 80px;
   }
   .sidebar_heading {
     margin-top: 50px;
@@ -64,6 +60,7 @@ background: #ffffff !important;
     border: 0px solid $inputPlaceholder;
     margin-left: 20px;
     height: 24px;
+    display: flex; justify-content: space-between; align-items: center; width: 100px; padding: 0px 10px
   }
   .sidebar_icon img {
     width: 24px;
@@ -95,50 +92,55 @@ background: #ffffff !important;
     width: 100%;
     justify-content: flex-start;
     align-items: center;
-    gap: 20px;
+    gap: 0px;
     border-radius: 12px;
-    padding: 10px;
+    padding: 10px 0;
     cursor: pointer;
+  }
+  .sidebar_brand_img {
+    margin: 0 0 30px 0;
+  }
+  .sidebar_brand_img img {
+    width:80px;
+    height:auto;
+    margin:0 0 30px 24px;
   }
   .sidebar_icon img{
     width: 24px;
     height: 24px;
   }
-  .sidebar_menu_logout img:last-child {
+  .sidebar_menu_logout {
+    border-radius: 10px;
+    .sidebar_icon {
+      .logout_active {
+        display: block;
+      }
+      .logout_inactive {
+        display: none;
+      }
+      .sidebar_list_logout_name {
+        font-family: Inter;
+        font-size: 14px;
+        font-weight: 600;
+        color: #808191;
+      }
+    }
+    &:hover {
+      background-color: #000;
+      .sidebar_icon {
+        .logout_active {
+          display: none;
+        }
+        .logout_inactive {
+          display: block;
+        }
+        .sidebar_list_logout_name {
+          color:#fff;
+        }
+      }
+    }
     
-    display: none;  
   }
-  .sidebar_menu_logout:hover img:last-child {
-    display: block;  
-  }
-  .sidebar_menu_logout:hover img:first-child {
-    display: none;  
-  }
-  .sidebar_list_logout_name{
-    font-family: Inter;
-    font-size: 14px;
-    font-weight: 600;
-    color: #808191;
-  }
-  .sidebar_menu_logout:hover .sidebar_list_logout_name{
-    font-family: Inter;
-    font-size: 14px;
-    font-weight: 600;
-    color: #fff;
-  }
-  .sidebar_menu_logout:hover{
-   
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 20px;
-    background: #a1342d;
-    border-radius: 12px;
-    padding: 10px;
-    cursor: pointer;
-     
-   
-  }
+ 
   
 }

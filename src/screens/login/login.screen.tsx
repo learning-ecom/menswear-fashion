@@ -5,42 +5,47 @@ import PrimaryButton from "../../common_components/ui/button/primary_Button.ui";
 import "./login.screen.scss";
 import { Model } from "../../imports/model.import";
 import { Functions } from "../../utils/imports.utils";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const LoginScreen = () => {
-
+  const role: any = localStorage.getItem("role");
 
   // state
   const [state, setState] = useSetState({
     email: "",
     password: "",
+    loginData:{}
   });
-  
-const navigate:any =useNavigate();
+
   // userlogin
-  const userLogin =async()=>{
-    const body ={
+  const userLogin = async () => {
+    const body = {
       email: state.email,
-      password: state.password
-    }
+      password: state.password,
+    };
     try {
-      const res:any = await Model.user.userLogin(body)
+      const res: any = await Model.user.userLogin(body);
       localStorage.setItem("id", res.data._id);
       localStorage.setItem("role", res.data.role);
       localStorage.setItem("token", res.token);
-      if(Object.keys(res.data).length>0){
+      setState({ firstname: "", lastname: "", email: "", password: "",loginData:res.data });
+    } catch (error) {
+      Functions.notiflixFailure(error);
+    } finally {
+      Functions.notiflixRemove();
+    }
+  };
+  useEffect(()=>{
+    if (Object.keys(state.loginData).length > 0) {
+      if (role === "admin") {
+        window.location.href="/dashboard"
+      } else if (role === "user") {
         window.location.href='/home'
-       }
-      
-      setState({ firstname: "", lastname: "", email: "", password: "" });
-     } catch (error) {
-       Functions.notiflixFailure(error);
-     } finally {
-       Functions.notiflixRemove();
-     }
-   };
+      }
+    }
+    // eslint-disable-next-line
 
+  },[state.loginData])
   return (
     <div className="login_container">
       <div className="login_form">

@@ -10,20 +10,15 @@ import '../hoc/main.scss'
 export default function Main(props: any) {
   const role:any=localStorage.getItem('role')
   const navigate:any=useNavigate()
-  // let token = localStorage.getItem('token');
+  let token = localStorage.getItem('token');
   // if (!token) window.location.pathname = '/login';
   const [state, setState] = useSetState({
     signout: false,
     loading: false,
   });
 
-  useEffect(()=>{
 
-   
-if(role==='admin' ){
-      navigate('/admin/dashboard')
-    }
-  }, [role])
+
   const setMainLoading = (loading: boolean) => {
     setState({ loading: loading });
   };

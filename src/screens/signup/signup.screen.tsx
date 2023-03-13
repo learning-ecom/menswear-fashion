@@ -5,15 +5,21 @@ import PrimaryButton from "../../common_components/ui/button/primary_Button.ui";
 import Input from "../../common_components/ui/input_field/input_field.ui";
 import { Model } from "../../imports/model.import";
 import { Functions } from "../../utils/imports.utils";
+import { useEffect } from "react";
 
 const SignUpScreen = () => {
+  const role:any=localStorage.getItem('role')
+
+
   const [state, setState] = useSetState({
     firstname: "",
     lastname: "",
     email: "",
     password: "",
     cpassword: "",
+    signupData:{}
   });
+
   const handleSignup = async () => {
     Functions.notiflixLoader();
     try {
@@ -27,10 +33,8 @@ const SignUpScreen = () => {
       localStorage.setItem("id", res.data._id);
       localStorage.setItem("role", res.data.role);
       localStorage.setItem("token", res.token);
-      setState({ firstname: "", lastname: "", email: "", password: "" });
-      if(Object.keys(res.data).length>0){
-        window.location.href='/home'
-       }
+      setState({ firstname: "", lastname: "", email: "", password: "",signupData:res.data });
+    
       
     } catch (error) {
       Functions.notiflixFailure(error);
@@ -39,7 +43,15 @@ const SignUpScreen = () => {
     }
   };
 
-
+  useEffect(()=>{
+    if (role) {
+      if (role === "admin") {
+        window.location.href="/dashboard"
+      } else if (role === "user") {
+        window.location.href='/home'
+      }
+    }
+  },[role])
   return (
     <div className="signup_container">
       <div className="signup_form">

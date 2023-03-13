@@ -196,6 +196,7 @@ const FilterSidebar = (props: Isidebar) => {
   };
 useEffect(()=>{
   clearFilter()
+    // eslint-disable-next-line
 },[])
   return (
     <div>

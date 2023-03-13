@@ -1,11 +1,11 @@
-import CartDetails from "../../common_components/ui/cart_details/cart_details.ui";
+import CartDetails from "../../components/cart_details/cart_details.component";
 import "./cart.screen.scss";
 import { useSetState } from "../../utils/functions.utils";
 import Splider from "../../common_components/ui/splider/splider.ui";
 import { Functions } from "../../utils/imports.utils";
 import { Model } from "../../imports/model.import";
 import { useEffect } from "react";
-import PriceDetails from "../../common_components/ui/price_details/price_details";
+import PriceDetails from "../../components/price_details/price_details.component";
 import { PriceData } from "../../utils/redux.utils";
 import { useNavigate } from "react-router";
 
@@ -35,6 +35,7 @@ const Cart = () => {
     if (!localStorage.token) {
       navigate('/login');
     }
+    // eslint-disable-next-line
   }, []);
 
 // hooks

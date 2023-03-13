@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Sidebar from '../../admin/common_components/ui/sidebar/sidebar_component.ui'
+import React from 'react'
+import Sidebar from '../../components/sidebar_admin/sidebar_admin.component'
 import { useSetState } from '../../utils/functions.utils'
 import Footer from './footer/footer.screen'
 import Navbar from './navbar/navbar.screen'
@@ -9,9 +8,6 @@ import '../hoc/main.scss'
 
 export default function Main(props: any) {
   const role:any=localStorage.getItem('role')
-  const navigate:any=useNavigate()
-  let token = localStorage.getItem('token');
-  // if (!token) window.location.pathname = '/login';
   const [state, setState] = useSetState({
     signout: false,
     loading: false,
@@ -45,8 +41,6 @@ export default function Main(props: any) {
       {renderChildren()}
     </div>
   </div>
-  
- 
   </>:<> <Navbar/>{renderChildren()}<Footer/></>
 
 }

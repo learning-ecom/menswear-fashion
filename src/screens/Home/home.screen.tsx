@@ -49,6 +49,7 @@ const Home = () => {
       getImage();
       getAllProduct()
     }
+    // eslint-disable-next-line
   }, []);
 
   const prevSlide = () => {

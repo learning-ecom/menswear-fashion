@@ -1,7 +1,7 @@
-import Assets from "../../../imports/assets.imports";
-import { Model } from "../../../imports/model.import";
-import { Functions } from "../../../utils/imports.utils";
-import "./cart_details.ui.scss";
+import Assets from "../../imports/assets.imports";
+import { Model } from "../../imports/model.import";
+import { Functions } from "../../utils/imports.utils";
+import "./cart_details.component.scss";
 
 interface ICartDetails {
   cartData?: any;

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./card.ui.scss";
+import "./card.component.scss";
 
 interface ICard {
   id?:any;

@@ -1,7 +1,7 @@
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "./splider.ui.scss";
 import "@splidejs/react-splide/css/sea-green";
-import Card from "../card/card.ui";
+import Card from "../../../components/card/card.component";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
 

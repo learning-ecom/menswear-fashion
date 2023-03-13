@@ -1,10 +1,10 @@
-import  { useEffect, } from 'react';
-import { Functions} from '../../../../utils/imports.utils';
-import './sidebar_component.ui.scss';
-import { Assets } from '../../../../utils/imports.utils';
+import { Functions} from '../../utils/imports.utils';
+import './sidebar_admin.component.scss';
+import { Assets } from '../../utils/imports.utils';
 import { useNavigate } from 'react-router-dom';
 import Notiflix from 'notiflix';
-import { useSetState } from '../../../../utils/functions.utils';
+import { useSetState } from '../../utils/functions.utils';
+import { useEffect } from 'react';
 
 interface ISidebar {
   text?: String;
@@ -56,9 +56,10 @@ const Sidebar = (props: ISidebar) => {
     pathname: '',
   });
  
-  // useEffect(() => {
-  //   setState({ pathname: window.location.pathname.split('/')[1] });
-  // }, [state.pathname]);
+  useEffect(() => {
+    setState({ pathname: window.location.pathname.split('/')[1] });
+    // eslint-disable-next-line
+  }, [state.pathname]);
 
   // logout
   const logout = async () => {
@@ -98,7 +99,7 @@ const Sidebar = (props: ISidebar) => {
                         <img
                           className="color"
                           src={
-                            state.pathname == item.active_name
+                            state.pathname === item.active_name
                               ? item.active_icon
                               : state.pathname === item.user_details
                               ? item.active_icon

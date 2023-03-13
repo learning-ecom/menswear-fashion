@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Model } from "../../../imports/model.import";
-import { notiflixFailure, useQuery, useSetState } from "../../../utils/functions.utils";
-import { Assets, Functions } from "../../../utils/imports.utils";
-import { PriceData } from "../../../utils/redux.utils";
-import InviteModal from "../invite_modal/invite_modal";
-import PrimaryButton from "../button/primary_Button.ui";
+import { Model } from "../../imports/model.import";
+import { notiflixFailure, useQuery, useSetState } from "../../utils/functions.utils";
+import { Assets, Functions } from "../../utils/imports.utils";
+import { PriceData } from "../../utils/redux.utils";
+import InviteModal from "../../common_components/ui/invite_modal/invite_modal";
+import PrimaryButton from "../../common_components/ui/button/primary_Button.ui";
 
-import "./price_details.scss";
+import "./price_details.component.scss";
 
 const PriceDetails = (props: any) => {
  

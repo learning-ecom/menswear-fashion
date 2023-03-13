@@ -35,17 +35,18 @@ const LoginScreen = () => {
       Functions.notiflixRemove();
     }
   };
+  
   useEffect(()=>{
     if (Object.keys(state.loginData).length > 0) {
       if (role === "admin") {
-        window.location.href="/dashboard"
+        window.location.href="/admin/dashboard"
       } else if (role === "user") {
         window.location.href='/home'
       }
     }
     // eslint-disable-next-line
-
   },[state.loginData])
+
   return (
     <div className="login_container">
       <div className="login_form">

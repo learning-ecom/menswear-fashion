@@ -46,7 +46,7 @@ const SignUpScreen = () => {
   useEffect(()=>{
     if (role) {
       if (role === "admin") {
-        window.location.href="/dashboard"
+        window.location.href="/admin/dashboard"
       } else if (role === "user") {
         window.location.href='/home'
       }

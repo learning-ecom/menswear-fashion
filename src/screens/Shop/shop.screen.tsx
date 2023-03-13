@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import Card from "../../common_components/ui/card/card.ui";
-import Pagination from "../../common_components/ui/Pagination/Pagination";
+import Card from "../../components/card/card.component";
+import Pagination from "../../common_components/ui/pagination/Pagination";
 import FilterSidebar from "../../common_components/ui/sidebar/sidebar_component.ui";
 import { Model } from "../../imports/model.import";
 import { useSetState } from "../../utils/functions.utils";
@@ -54,7 +54,6 @@ const Shops = () => {
       navigate('/login');
     }
     // eslint-disable-next-line
-
   },[])
   // hooks
   useEffect(() => {

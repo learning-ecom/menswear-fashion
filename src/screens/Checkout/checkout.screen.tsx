@@ -13,7 +13,7 @@ import "react-responsive-modal/styles.css";
 import { Functions, NavButton } from "../../utils/imports.utils";
 import InviteModal from "../../common_components/ui/invite_modal/invite_modal";
 import { Model } from "../../imports/model.import";
-import PriceDetails from "../../common_components/ui/price_details/price_details";
+import PriceDetails from "../../components/price_details/price_details.component";
 import { useNavigate } from "react-router";
 
 const CheckoutScreen = () => {

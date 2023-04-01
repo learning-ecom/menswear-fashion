@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Provider } from "react-redux";
 import "./App.scss";
-import Home from "./screens/home/home.screen"
-import Shop from "./screens/shop/shop.screen";
+import Home from "./screens/Home/home.screen"
+import Shop from "./screens/Shop/shop.screen";
 import store from "./store/store";
 import ProductDetails from "./screens/product_details/product_details.screen";
-import CheckoutScreen from "./screens/checkout/checkout.screen";
-import Cart from "./screens/cart/cart.screen";
+import CheckoutScreen from "./screens/Checkout/checkout.screen";
+import Cart from "./screens/Cart/cart.screen";
 import Login from "./screens/login/login.screen";
 import Signup from "./screens/signup/signup.screen";
 import  { Toaster } from 'react-hot-toast';

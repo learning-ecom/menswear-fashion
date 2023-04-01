@@ -65,7 +65,17 @@ letter-spacing: 0.04em
   width: 20px;
   height: 20px;
 }
-
+.left-icon-container {
+  display:flex;
+  justify-content: space-between;
+  width:auto;
+}
+.right-image-container {
+  display:flex;
+  justify-content: space-between;
+  width:auto;
+  flex-direction: row-reverse;
+}
 @media only screen and (min-width: 1366px) and (max-width: 1520px) {
   .button_text {
     font-size: 12px;

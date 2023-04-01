@@ -17,13 +17,15 @@ interface IPrimaryButton {
   padding?: any;
   fontFamily?: any;
   letterSpacing?: any;
+  iconDirection?: any
 }
 
 const PrimaryButton = (props: IPrimaryButton) => {
   return (
     <div
-      className={`${props.disabled ? 'disabled' : 'button_wrapper'} ${
-        props.className || ''
+      className={`${props.disabled ? "disabled" : !props.iconDirection ? `button_wrapper` : props.iconDirection === 'left' ?`left-icon-container button_wrapper`
+      : `right-image-container button_wrapper`} ${
+        props.className || ""
       }`}
       style={{
         backgroundColor: props.backgroundColor,
@@ -36,24 +38,26 @@ const PrimaryButton = (props: IPrimaryButton) => {
         if (!props.disabled) {
           props.onClick();
         }
-      }}>
+      }}
+    >
       {props.icon && (
         <div className="primary_button_img">
           <img src={props.icon} alt="icon" className="primary_btn_icon" />
         </div>
       )}
       <div
-       
-        className="button_content">
+        className={`button_content`}
+      >
         <div
           style={{
             color: props.color,
             fontSize: props.fontSize,
             fontWeight: props.fontWeight,
             fontFamily: props.fontFamily,
-            letterSpacing:props.letterSpacing,
+            letterSpacing: props.letterSpacing,
           }}
-          className="button_text">
+          className="button_text"
+        >
           {props.text}
         </div>
         {props.right_icon && (

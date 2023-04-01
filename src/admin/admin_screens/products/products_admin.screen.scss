@@ -1,0 +1,171 @@
+.products {
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 40px 7%;
+        h1 {
+            margin: 0;
+        }
+        .create-button {
+            background-color: #000;
+            width:13%;
+            .button-content {
+                justify-content: flex-start;
+            }
+            .primary_button_img {
+                .primary_btn_icon {
+                    width:14px;
+                    height:14px;
+                }
+            }
+        }
+    }
+    .card {
+        .table {
+            table {
+                thead {
+                    tr th:nth-child(1) {
+                        width: 1% !important
+                    }
+                    tr th{
+                        width: 12% !important;
+                    }
+                    tr th:last-child{
+                        width: 25% !important;
+                    }
+                }
+            }
+        }
+        .list-table {
+            table {
+                tbody {
+                    .szh-accordion__item-btn {
+                        border: 0px solid transparent;
+                    }
+                    tr {
+                        background-color: #fff;
+                        border-bottom: 1px solid #E4E4E4;
+                        border-top: 1px solid #E4E4E4;
+                        td:nth-child(1) {
+                            width: 1%
+                        }
+                        .product-image {
+                            height:35px;
+                            width: auto;
+                        }
+                        td {
+                            width: 113px;
+                            .action-flex {
+                                display:flex;
+                                justify-content: center;
+                                align-items: center;
+                                padding-right:10px;
+                                .add, .delete, .view {
+                                    display:flex;
+                                    align-items: center;
+                                    img {
+                                        width:auto;
+                                        height:20px;
+                                        margin: 0 15px;
+                                    }
+                                }
+                            }
+                            &:last-child {
+                                width: 25% !important;
+                                // margin: 0 auto 0 auto;
+                            }
+                        }
+                    }
+                    .product_display_card {
+                        padding: 8px 10px;
+                        .first-row, .third-row {
+                            display: flex;
+                            justify-content: space-between;
+                            
+                            align-items: center;
+                            .sub-heading{
+                                margin:10px 0;
+                                &.text-center {
+                                    text-align: center;
+                                }
+                                h6 {
+                                    font-size: 18px;
+                                    line-height: 26px;
+                                    font-weight: 600;
+                                }
+                                p {
+                                    font-size: 14px;
+                                    line-height: 20px;
+                                    font-weight: 400;
+                                }
+                            }
+                        }
+                        .second-row {
+                            margin:10px 0;
+                            h6 {
+                                font-size: 18px;
+                                line-height: 26px;
+                                font-weight: 600;
+                            }
+                            p {
+                                font-size: 14px;
+                                line-height: 20px;
+                                font-weight: 400;
+                            }
+                        }
+                        .fourth-row {
+                            display: flex;
+                            justify-content: flex-start;
+                            margin: 30px 0 0 0;
+                            align-items: center;
+                            .image {
+                                img {
+                                    height: 100px;
+                                    width:auto;
+                                    object-fit: cover;
+                                }
+                            }
+                            .quantity-lot {
+                                margin: 0 0 0 30px;
+                                display:flex;
+                                align-items: center;
+                                .size {
+                                    margin: 0 15px;
+                                display:flex;
+                                align-items: center;
+                                h6 {
+                                    font-size: 20px;
+                                    line-height: 30px;
+                                }
+                                p {
+                                    margin: 0 10px;
+                                    font-size: 20px;
+                                }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(min-width: 1920px) {
+    .products{
+        .card {
+            .list-table {
+                table {
+                    tbody {
+                        tr {
+                            td {
+                                width:152px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

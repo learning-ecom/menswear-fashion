@@ -24,9 +24,11 @@ import product_inactive from "../assets/icons/product_inactive.png";
 import logout_active from "../assets/icons/logout_active.png";
 import logout_inactive from "../assets/icons/logout_inactive.png";
 import search from "../assets/icons/search.png";
-
-
-
+import plusAdd from '../assets/icons/add.png';
+import editIcon from '../assets/icons/edit.png';
+import deleteIcon from '../assets/icons/delete.png';
+import viewIcon from '../assets/icons/view.png';
+import accountIcon from '../assets/icons/account.png'
 const Assets = {
   cart,
   logo,
@@ -53,7 +55,12 @@ const Assets = {
   product_inactive, 
   logout_active,
   logout_inactive,
-  search
+  search,
+  plusAdd,
+  editIcon,
+  deleteIcon,
+  viewIcon,
+  accountIcon
 };
 
 export default Assets;

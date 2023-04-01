@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import Card from "../../components/card/card.component";
-import Pagination from "../../common_components/ui/pagination/Pagination";
+import Pagination from "../../common_components/ui/Pagination/Pagination";
 import FilterSidebar from "../../common_components/ui/sidebar/sidebar_component.ui";
 import { Model } from "../../imports/model.import";
 import { useSetState } from "../../utils/functions.utils";

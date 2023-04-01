@@ -5,8 +5,6 @@ const initialState ={
     data:[] 
 }
 
-
-
 const priceReducer=(state=initialState,action:storeAction) => {
     switch(action.type){
         case 'PRICE_DATA':
